@@ -1,0 +1,107 @@
+/* Hero.css */
+
+.hero {
+  min-height: calc(100vh - 80px); /* fast Fullscreen unter Navbar */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Inhalt */
+
+.hero-content {
+  max-width: 540px;
+}
+
+/* Headline */
+
+.hero-content h1 {
+  font-size: clamp(2.1rem, 6vw, 2.8rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* der erste p im Hero-Content */
+
+.hero-content p {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* Buttons */
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Visual / Mockup */
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-can-placeholder {
+  width: 150px;
+  height: 300px;
+  border-radius: 40px;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-main);
+}
+
+/* ============ TABLET / DESKTOP ============ */
+
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-content p {
+    margin: 0;
+  }
+
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  .hero-image {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .hero-can-placeholder {
+    width: 170px;
+    height: 340px;
+  }
+}

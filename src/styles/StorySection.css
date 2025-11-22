@@ -1,0 +1,72 @@
+/* StorySection.css */
+
+.story-section {
+  /* Root bleibt im Flow */
+}
+
+.story-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Textseite */
+
+.story-text {
+  max-width: 560px;
+}
+
+.story-text h2 {
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
+  margin-bottom: 12px;
+}
+
+.story-text p {
+  font-size: 0.96rem;
+}
+
+/* Visual */
+
+.story-visual {
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  padding: 20px 18px;
+  box-shadow: var(--shadow-soft);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-visual p {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .story-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+
+  .story-visual {
+    min-height: 220px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .story-grid {
+    gap: 40px;
+  }
+
+  .story-visual {
+    min-height: 260px;
+  }
+}

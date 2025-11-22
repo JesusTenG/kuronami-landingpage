@@ -1,0 +1,105 @@
+/* USPSection.css */
+
+.usp-section {
+  /* section spacing + max-width kommen aus global.css */
+}
+
+/* Grid: mobile 1 Spalte, ab Tablet direkt 3 Spalten */
+.usp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.usp-card {
+  position: relative;
+  padding: 22px 20px 26px;
+  border-radius: 20px;
+
+  /* Glassy Mint Gradient */
+  background: linear-gradient(
+      145deg,
+      rgba(34, 199, 165, 0.65),
+      rgba(34, 199, 165, 0.35)
+    ),
+    rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(34, 199, 165, 0.55);
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.10),
+    inset 0 0 18px rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(16px);
+}
+
+
+.usp-card {
+  position: relative;
+  padding: 22px 20px 26px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    150deg,
+    rgba(34, 199, 165, 1) 0%,
+    rgba(27, 168, 139, 0.96) 50%,
+    rgba(20, 135, 112, 0.93) 100%
+  );
+
+  border: 1px solid rgba(34, 199, 165, 0.6);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    inset 0 0 14px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(10px);
+}
+
+
+.usp-card-icon {
+  width: 5vw;
+  height: 6vh;
+  margin: 0 auto 20px auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(6px);
+}
+
+
+
+/* Wenn du Icons als img nutzt */
+.usp-card-icon img {
+  width: 50%;
+  height: 100%;
+}
+
+
+/* Textbereich */
+.usp-card-content h3 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: #ecfdf5; /* warmer hell-mintiger Weißton */
+  font-weight: 600;
+}
+
+.usp-card-content p {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.55;
+}
+
+
+
+/* Tablet & Desktop: 3 nebeneinander */
+@media (min-width: 768px) {
+  .usp-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .usp-card {
+    padding: 22px 20px 24px;
+  }
+}

@@ -1,0 +1,26 @@
+:root {
+  /* Grundflächen – helles, neutrales Grau + Weiß */
+  --bg-page: #f5f5f7;
+  --bg-section: #ffffff;
+
+  /* Textfarben */
+  --text-main: #020617;
+  --text-muted: #6b7280;
+
+  /* Mint-Akzent */
+  --accent: #22c7a5;
+  --accent-strong: #0f766e;
+  --accent-soft: rgba(34, 199, 165, 0.14);
+
+  /* Rahmen / Schatten */
+  --border-soft: #e5e7eb;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+
+  /* Flavor-spezifisch */
+  --flavor-bg: #ffffff;
+  --flavor-accent: #22c7a5;
+
+  /* Kompatibilität zu alten Namen (falls noch irgendwo genutzt) */
+  --bg-dark: var(--bg-page);
+  --text-light: var(--text-main);
+}
