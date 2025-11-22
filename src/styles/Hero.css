@@ -5,13 +5,17 @@
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* Inner Wrapper übernimmt das Flex-Layout */
+.hero-inner {
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: hidden;
 }
 
 #hero {
@@ -123,7 +127,7 @@
    ========================= */
 
 @media (min-width: 768px) {
-  .hero {
+  .hero-inner {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -134,30 +138,20 @@
     flex: 1;
   }
 
-  .hero-subtitle {
-    margin: 0;
-  }
-
-  .hero-badges {
-    justify-content: flex-start;
-  }
-
-  .hero-buttons {
-    justify-content: flex-start;
-  }
-
   .hero-image {
     flex: 0 0 auto;
   }
+
+  .hero-buttons,
+  .hero-badges {
+    justify-content: flex-start;
+  }
 }
+
 
 @media (min-width: 1024px) {
   .hero-content h1 {
     font-size: 3rem;
   }
 
-  .hero-can-frame {
-    width: 200px;
-    border-radius: 40px;
-  }
 }

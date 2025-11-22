@@ -1,8 +1,54 @@
 /* USPSection.css */
 
+/* SECTION BACKGROUND (unten Mint, oben Weiß) */
 .usp-section {
-  /* section spacing + max-width kommen aus global.css */
+  position: relative;
+  background: var(--accent); /* Mint unten */
+  padding-top: 180px; /* Platz für die Wellen */
+  padding-bottom: 96px;
 }
+
+/* Entfernt die globale max-width-Beschränkung NUR für diese Section */
+.usp-section {
+  max-width: none !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Content wieder begrenzen */
+.usp-section > *:not(.custom-shape-divider-top-usp) {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+/* WAVE DIVIDER */
+.custom-shape-divider-top-usp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg); /* Flip vertical */
+}
+
+.custom-shape-divider-top-usp svg {
+  position: relative;
+  display: block;
+  width: calc(126% + 1px);
+  height: 180px;
+  transform: rotateY(180deg); /* Flip horizontal */
+}
+
+/* Farbe der Wellen (oben!!) */
+.custom-shape-divider-top-usp .shape-fill {
+  fill: var(--bg-page); /* Weiß (F5F5F7) */
+}
+
 
 /* Grid: mobile 1 Spalte, ab Tablet direkt 3 Spalten */
 .usp-grid {
