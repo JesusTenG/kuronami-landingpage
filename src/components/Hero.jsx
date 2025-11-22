@@ -4,35 +4,34 @@ export default function Hero() {
   return (
     <section id="hero" className="hero">
       <div className="hero-content">
-        <span className="hero-tagline">High-caffeine mint energy</span>
+        <span className="hero-tagline">Concept energy for visionaries</span>
+
         <h1>KURONAMI DRIFT FUEL</h1>
+
         <p className="hero-subtitle">
-          High-caffeine mint blend inspired by Japanese street racing culture.
-          Built for late-night coding sessions, LAN parties and neon-soaked
-          city runs.
+          A mint-charged concept drink for founders, builders and creative
+          conquerors who treat every late night like a launch window.
         </p>
 
         <div className="hero-badges">
-          <span>Zero Sugar</span>
-          <span>Ultra Mint</span>
-          <span>Night Drift Ready</span>
+          <span>Sweet-Taste</span>
+          <span>High-Caffeine</span>
+          <span>Fresh-Mint</span>
         </div>
 
         <div className="hero-buttons">
-          <a href="#flavors" className="btn-primary">
-            Explore Flavors
-          </a>
-          <a href="#story" className="btn-secondary">
-            Brand Story
-          </a>
+          <a href="#flavors" className="btn-primary">Explore Flavors</a>
+          <a href="#story" className="btn-secondary">Read the Concept</a>
         </div>
       </div>
 
       <div className="hero-image">
-        <div className="hero-can-placeholder">
-          <span>Mint Can</span>
+          <img
+            src="/assets/kuronami-can-mint.png"
+            alt="KuroNami Drift Fuel – mint concept can"
+            className="hero-can-img"
+          />
         </div>
-      </div>
     </section>
   );
 }

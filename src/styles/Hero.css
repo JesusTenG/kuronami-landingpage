@@ -1,37 +1,91 @@
-/* Hero.css */
+/* =========================
+   HERO SECTION – KURO NAMI
+   ========================= */
 
 .hero {
-  min-height: calc(100vh - 80px); /* fast Fullscreen unter Navbar */
+  position: relative;
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
-/* Inhalt */
+#hero {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+/* =========================
+   TEXT BLOCK
+   ========================= */
 
 .hero-content {
   max-width: 540px;
 }
 
+/* Tagline über der Headline */
+
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.hero-tagline::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
 /* Headline */
 
 .hero-content h1 {
-  font-size: clamp(2.1rem, 6vw, 2.8rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(2.1rem, 6vw, 2.9rem);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-/* der erste p im Hero-Content */
+/* Subline */
 
-.hero-content p {
+.hero-subtitle {
   font-size: 0.98rem;
   color: var(--text-muted);
   max-width: 460px;
   margin: 0 auto;
+}
+
+/* Badges */
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.hero-badges span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
 }
 
 /* Buttons */
@@ -44,7 +98,9 @@
   margin-top: 24px;
 }
 
-/* Visual / Mockup */
+/* =========================
+   CAN / MOCKUP BLOCK
+   ========================= */
 
 .hero-image {
   display: flex;
@@ -52,23 +108,19 @@
   justify-content: center;
 }
 
-.hero-can-placeholder {
-  width: 150px;
-  height: 300px;
-  border-radius: 40px;
-  border: 2px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  box-shadow: var(--shadow-soft);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-main);
+/* Bild selbst */
+.hero-can-img {
+  width: min(75vw, 530px); /* mobile riesig, desktop capped */
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transform: translateY(0px);
 }
 
-/* ============ TABLET / DESKTOP ============ */
+
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media (min-width: 768px) {
   .hero {
@@ -82,8 +134,12 @@
     flex: 1;
   }
 
-  .hero-content p {
+  .hero-subtitle {
     margin: 0;
+  }
+
+  .hero-badges {
+    justify-content: flex-start;
   }
 
   .hero-buttons {
@@ -100,8 +156,8 @@
     font-size: 3rem;
   }
 
-  .hero-can-placeholder {
-    width: 170px;
-    height: 340px;
+  .hero-can-frame {
+    width: 200px;
+    border-radius: 40px;
   }
 }
