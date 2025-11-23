@@ -1,25 +1,115 @@
-/* Gallery.css */
+/* =========================
+   GALLERY SECTION
+   ========================= */
 
 .gallery-section {
-  /* Section-Spaces kommen global */
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
+
+/* Background Wave */
+
+.custom-shape-divider-top-usp2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: -1; /* Welle hinter die Gallery-Karten legen */
+}
+
+.custom-shape-divider-top-usp2 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 90px; /* Höhe der Welle */
+  transform: rotate(180deg);
+}
+
+/* HIER steuerst du die Farbe der Welle */
+.custom-shape-divider-top-usp2 .shape-fill2 {
+  fill: var(--flavor-bg);   /* statt background */
+  transition: fill 0.5s ease;
+}
+
+/* Header */
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.gallery-title {
+  font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.gallery-title span {
+  background: linear-gradient(135deg, var(--accent), #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gallery-subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* =========================
+   GALLERY = 5 vertical images
+   ========================= */
 
 .gallery-grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr;
+  gap: 20px;
+  grid-auto-rows: 380px; /* Hochkant */
+  grid-template-columns: 1fr; /* Mobile */
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
 }
 
-/* Card */
+.gallery-grid::-webkit-scrollbar {
+  display: none;
+}
 
 .gallery-item {
   position: relative;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid var(--border-soft);
-  min-height: 160px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--flavor-bg); /* JETZT Flavor-Farbe */
+  min-height: 180px;
   box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+
+.gallery-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--flavor-bg);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  /* WICHTIG: Höhe nicht fixen */
 }
 
 .gallery-item img {
@@ -28,29 +118,26 @@
   object-fit: cover;
 }
 
-/* Placeholder */
 
-.gallery-item.placeholder {
-  padding: 30px 20px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-}
 
-/* Tablet */
 
+/* Tablet = 3 Spalten */
 @media (min-width: 640px) {
   .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 420px;
+    overflow-x: visible;
+  }
+  .gallery-item {
+    min-width: 0;
   }
 }
 
-/* Desktop */
-
+/* Desktop = 5 Spalten */
 @media (min-width: 1024px) {
   .gallery-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 460px;
+    gap: 1rem;
   }
 }
