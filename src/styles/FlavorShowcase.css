@@ -1,131 +1,238 @@
 /* FlavorShowcase.css */
 
+/* Full-width, clean color background */
 .flavor-section {
+  position: relative;
   background: var(--flavor-bg);
-  border-radius: 24px;
-  padding: 32px 20px;
-  margin-top: 40px;
-  box-shadow: var(--shadow-soft);
+  transition: background 0.5s ease;
 }
 
-/* Layout: mobile untereinander */
+/* =========================
+   HEADER AREA
+   ========================= */
+
+.flavor-inner h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.flavor-subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 2.2rem;
+}
+
+
+/* =========================
+   LAYOUT
+   ========================= */
 
 .flavor-slider {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 24px;
+  margin-top: 8px;
+  align-items: center;
 }
-
-/* Stack für die Flavor-Cards */
 
 .flavor-stack {
   position: relative;
-  min-height: 220px;
-  flex: 1;
+  height: 250px;   
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+  overflow: visible;
 }
 
-/* Flavor-Card */
+/* =========================
+   THE CARD
+   ========================= */
 
 .flavor-card {
   position: absolute;
   inset: 0;
   padding: 20px;
   border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid var(--flavor-accent);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+
+  background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0.12)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.22),
+    inset 0 0 18px rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(18px);
+
   opacity: 0;
-  transform: translateY(10px) scale(0.98);
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
 }
+
+/* inner structure */
+
+.flavor-card-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 14px;
+  height: 100%;
+}
+
+/* =========================
+   TEXT
+   ========================= */
+
+.flavor-card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 58%;
+}
+
+.flavor-card-text h3 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
+  color: #0f172a;
+  margin-left: 2rem;
+}
+
+.flavor-sub {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--flavor-accent);
+  margin-bottom: 6px;
+  margin-left: 2rem;
+}
+
+.flavor-card-text p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #334155;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+/* =========================
+   IMAGE
+   ========================= */
+
+.flavor-card-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flavor-card-media img {
+  max-width: 190px;
+  width: 55%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 22px rgba(15, 23, 42, 0.45));
+}
+
+/* =========================
+   CARD STATES (STACK)
+   ========================= */
 
 .flavor-card--active {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translate(0, 0) scale(1);
+  z-index: 3;
+  pointer-events: auto;
 }
 
-.flavor-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+.flavor-card--next {
+  opacity: 0.6;
+  transform: translate(28px, 22px) scale(0.97);
+  z-index: 2;
 }
 
-.flavor-card p {
-  font-size: 0.92rem;
+
+
+.flavor-card--prev {
+  opacity: 0.4;
+  transform: translate(-14px, 10px) scale(0.95);
+  z-index: 1;
 }
 
-/* Controls */
-
-.flavor-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+.flavor-card--hidden {
+  opacity: 0;
+  transform: translateY(14px) scale(0.92);
+  z-index: 0;
 }
 
 .flavor-nav {
-  background: #ffffff;
-  border: 1px solid var(--flavor-accent);
-  border-radius: 999px;
-  width: 36px;
-  height: 36px;
-  color: var(--flavor-accent);
-  cursor: pointer;
-  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 98px;
+  height: 98px;
+
+  border-radius: 50%;
+  background: transparent;
+  border: 0;
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Standard: nah an den Kartenkanten (mobile & desktop) */
+.flavor-prev { left: -6rem; }
+.flavor-next { right: -6rem; }
+
+/* Icon selbst */
+.flavor-nav img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .flavor-nav:hover {
-  background: var(--accent-soft);
-  transform: translateY(-1px);
+  transform: translateY(-50%) scale(1.18);
 }
 
-.flavor-dots {
-  display: flex;
-  gap: 6px;
+.flavor-nav:hover img {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
-.flavor-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.35);
-}
 
-.flavor-dot--active {
-  background: var(--flavor-accent);
-}
 
-/* Tablet */
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media (min-width: 768px) {
-  .flavor-section {
-    padding: 40px 24px;
-  }
+  .flavor-stack { height: 260px; }
 
-  .flavor-slider {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .flavor-controls {
-    flex-direction: column;
+  .flavor-card-media img {
+    max-width: 220px;
+    width: 100%;
   }
 }
 
-/* Desktop */
-
 @media (min-width: 1024px) {
-  .flavor-section {
-    padding: 48px 32px;
-  }
-
-  .flavor-stack {
-    min-height: 260px;
-  }
+  .flavor-stack { height: 280px; }
 }

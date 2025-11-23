@@ -139,6 +139,11 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.flavor-reactive {
+  background: var(--flavor-bg);
+  transition: background 0.5s ease;
+}
+
 /* ============ GLOBALE MEDIA QUERIES ============ */
 
 @media (min-width: 768px) {
