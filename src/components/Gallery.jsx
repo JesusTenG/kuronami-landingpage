@@ -1,56 +1,62 @@
 // src/components/Gallery.jsx
+import { useEffect, useState } from "react";
 import "../styles/Gallery.css";
 
+const IMAGE_POOL = [
+  "/assets/mint1.png",
+  "/assets/berry1.png",
+  "/assets/citrus1.png",
+  "/assets/peach1.png",
+  "/assets/strawberry1.png",
+  "/assets/m1.png",
+  "/assets/m2.png",
+  "/assets/m3.png",
+  "/assets/m4.png",
+  "/assets/m5.png",
+  "/assets/m6.png",
+  "/assets/m7.png",
+  "/assets/m8.png",
+  "/assets/m9.png",
+  "/assets/m10.png",
+  "/assets/m11.png",
+  "/assets/m12.png",
+  "/assets/m13.png",
+];
+
+const PIECE_COUNT = 5;
+
 export default function Gallery() {
+  const [tick, setTick] = useState(0);
+
+  // Every 10 seconds → tick++
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTick((prev) => prev + 1);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Panel-Nr + delay bestimmen Bildindex
+  const visibleImages = Array.from({ length: PIECE_COUNT }, (_, i) => {
+    const delayedTick = tick + Math.floor(i * 0.5 * 1000 / 10000); 
+    return IMAGE_POOL[(delayedTick + i) % IMAGE_POOL.length];
+  });
+
   return (
     <section id="gallery" className="gallery-section">
 
-      {/* Wellen – immer außerhalb */}
-      <div className="custom-shape-divider-top-usp2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            className="shape-fill2"
-          ></path>
-        </svg>
-      </div>
+      <div className="gallery-hero-band">
+        <div className="gallery-mosaic">
 
-      <div className="section-inner">
-        <div className="gallery-header">
-          <h2 className="gallery-title">
-            Concept <span>Visuals</span>
-          </h2>
-          <p className="gallery-subtitle">
-            Early product mockups, campaign frames and mood visuals
-            for the Kuronami launch.
-          </p>
-        </div>
+          {visibleImages.map((img, i) => (
+            <div
+              key={i}
+              className={`mosaic-piece mosaic-piece--${i + 1}`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
 
-        <div className="gallery-grid">
-
-          <div className="gallery-item">
-            <img src="/assets/mint1.png" alt="Concept A" />
-          </div>
-
-          <div className="gallery-item">
-            <img src="/assets/citrus1.png" alt="Concept B" />
-          </div>
-
-          <div className="gallery-item">
-            <img src="/assets/berry1.png" alt="Concept C" />
-          </div>
-
-          <div className="gallery-item">
-            <img src="/assets/peach1.png" alt="Concept D" />
-          </div>
-
-          <div className="gallery-item">
-            <img src="/assets/strawberry1 .png" alt="Concept E" />
-          </div>
         </div>
       </div>
 
