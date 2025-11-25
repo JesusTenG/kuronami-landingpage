@@ -2,64 +2,127 @@
 import { useEffect, useState } from "react";
 import "../styles/Gallery.css";
 
-const IMAGE_POOL = [
-  "/assets/mint1.png",
-  "/assets/berry1.png",
-  "/assets/citrus1.png",
-  "/assets/peach1.png",
-  "/assets/strawberry1.png",
-  "/assets/m1.png",
-  "/assets/m2.png",
-  "/assets/m3.png",
-  "/assets/m4.png",
-  "/assets/m5.png",
-  "/assets/m6.png",
-  "/assets/m7.png",
-  "/assets/m8.png",
-  "/assets/m9.png",
-  "/assets/m10.png",
-  "/assets/m11.png",
-  "/assets/m12.png",
-  "/assets/m13.png",
+const FLAVOR_SETS = [
+  {
+    id: "mint",
+    images: [
+      "/assets/mint1.png",
+      "/assets/mint2.png",
+      "/assets/mint3.png",
+      "/assets/mint4.png",
+      "/assets/mint5.png",
+    ],
+  },
+  {
+    id: "citrus",
+    images: [
+      "/assets/citrus1.png",
+      "/assets/citrus2.png",
+      "/assets/citrus3.png",
+      "/assets/citrus4.png",
+      "/assets/citrus5.png",
+    ],
+  },
+  {
+    id: "peach",
+    images: [
+      "/assets/peach1.png",
+      "/assets/peach2.png",
+      "/assets/peach3.png",
+      "/assets/peach4.png",
+      "/assets/peach5.png",
+    ],
+  },
+  {
+    id: "strawberry",
+    images: [
+      "/assets/strawberry1.png",
+      "/assets/strawberry2.png",
+      "/assets/strawberry3.png",
+      "/assets/strawberry4.png",
+      "/assets/strawberry5.png",
+    ],
+  },
+  {
+    id: "berry",
+    images: [
+      "/assets/berry1.png",
+      "/assets/berry2.png",
+      "/assets/berry3.png",
+      "/assets/berry4.png",
+      "/assets/berry5.png",
+    ],
+  },
 ];
 
 const PIECE_COUNT = 5;
+const SWITCH_INTERVAL = 10000; // 10s
+const STAGGER_DELAY = 200;     // ms between each panel update
+
 
 export default function Gallery() {
-  const [tick, setTick] = useState(0);
+  const [flavorIndex, setFlavorIndex] = useState(0);
+  const [visibleImages, setVisibleImages] = useState(
+    FLAVOR_SETS[0].images
+  );
 
-  // Every 10 seconds → tick++
+  // Cycle flavor every 10s
   useEffect(() => {
     const interval = setInterval(() => {
-      setTick((prev) => prev + 1);
-    }, 10000);
+      setFlavorIndex((prev) => (prev + 1) % FLAVOR_SETS.length);
+    }, SWITCH_INTERVAL);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Panel-Nr + delay bestimmen Bildindex
-  const visibleImages = Array.from({ length: PIECE_COUNT }, (_, i) => {
-    const delayedTick = tick + Math.floor(i * 0.5 * 1000 / 10000); 
-    return IMAGE_POOL[(delayedTick + i) % IMAGE_POOL.length];
-  });
+ useEffect(() => {
+  const nextImages = FLAVOR_SETS[flavorIndex].images;
+  const timeouts = [];
+
+  for (let i = 0; i < PIECE_COUNT; i++) {
+    // 1. OUT animation first
+    timeouts.push(
+      setTimeout(() => {
+        // Panel bekommt 'out'
+        const piece = document.querySelector(
+          `.mosaic-piece--${i + 1}`
+        );
+        if (piece) piece.classList.add("mosaic-piece--out");
+
+        // 2. wait for fade-out duration (0.8s) → swap image
+        setTimeout(() => {
+          setVisibleImages((prev) => {
+            const clone = [...prev];
+            clone[i] = nextImages[i];
+            return clone;
+          });
+
+          // remove OUT after swap (so next cycle works clean)
+          if (piece) piece.classList.remove("mosaic-piece--out");
+        }, 800);
+      }, i * STAGGER_DELAY)
+    );
+  }
+
+  return () => {
+    timeouts.forEach(clearTimeout);
+  };
+}, [flavorIndex]);
+
 
   return (
     <section id="gallery" className="gallery-section">
-
       <div className="gallery-hero-band">
         <div className="gallery-mosaic">
-
-          {visibleImages.map((img, i) => (
+              {visibleImages.map((img, i) => (
             <div
-              key={i}
+              key={`${i}-${img}`}
               className={`mosaic-piece mosaic-piece--${i + 1}`}
               style={{ backgroundImage: `url(${img})` }}
             />
           ))}
-
         </div>
       </div>
-
     </section>
   );
 }

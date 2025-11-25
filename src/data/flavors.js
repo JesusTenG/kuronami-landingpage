@@ -10,7 +10,15 @@ export const flavors = [
       accent: "#3f775aff",
       glow: "#c0fee0"
     },
-    image: "/assets/kuronami-can-mint2.png" // später ersetzen
+    image: "/assets/kuronami-can-mint2.png",
+
+    facts: [
+      "Natural caffeine",
+      "B-Vitamins",
+      "Taurine for focus",
+      "Electrolytes",
+      "Zero sugar"
+    ]
   },
 
   {
@@ -24,7 +32,15 @@ export const flavors = [
       accent: "#8f52d6",
       glow: "#e0c8ff"
     },
-    image: "/assets/kuronami-can-berry.png"
+    image: "/assets/kuronami-can-berry.png",
+
+    facts: [
+      "Natural caffeine",
+      "Antioxidant berries",
+      "Taurine support",
+      "L-Carnitine",
+      "Zero sugar"
+    ]
   },
 
   {
@@ -34,11 +50,19 @@ export const flavors = [
     description:
       "Sharp yuzu–lemon combo that cuts through brain fog instantly. Think sun-heated asphalt, cold air and a green light turning on.",
     hex: {
-      bg: "#d8a849ff",
-      accent: "#705c29ff",
+      bg: "#e7b44eff",
+      accent: "#c09f4cff",
       glow: "#fff1c4"
     },
-    image: "/assets/kuronami-can-citrus.png"
+    image: "/assets/kuronami-can-citrus.png",
+
+    facts: [
+      "Natural caffeine",
+      "Vitamin C",
+      "Electrolytes",
+      "Taurine kick",
+      "Zero sugar"
+    ]
   },
 
   {
@@ -49,10 +73,18 @@ export const flavors = [
       "Smooth peach-lychee blend for creators who move fast but stay composed. Soft on the tongue, sharp in the mind, made for stylish drifting.",
     hex: {
       bg: "#d6794aff",
-      accent: "#8a6955ff",
+      accent: "#b6744bff",
       glow: "#ffe5d1"
     },
-    image: "/assets/kuronami-can-peach.png"
+    image: "/assets/kuronami-can-peach.png",
+
+    facts: [
+      "Natural caffeine",
+      "L-Theanine calm",
+      "B-Vitamins",
+      "Hydration blend",
+      "Zero sugar"
+    ]
   },
 
   {
@@ -66,6 +98,14 @@ export const flavors = [
       accent: "#f25e48",
       glow: "#ffc1b3"
     },
-    image: "/assets/kuronami-can-strawberry.png"
+    image: "/assets/kuronami-can-strawberry.png",
+
+    facts: [
+      "Natural caffeine",
+      "Vitamin B12",
+      "Taurine boost",
+      "Electrolytes",
+      "Zero sugar"
+    ]
   }
 ];

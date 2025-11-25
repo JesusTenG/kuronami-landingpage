@@ -11,23 +11,34 @@
    HEADER AREA
    ========================= */
 
+/* Professional Product Header */
 .flavor-inner h2 {
   text-align: center;
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
   text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #0f172a;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+
+  margin-bottom: 0.5rem;
+  padding-inline: 6px;
+
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.25),
+    0 6px 20px rgba(0,0,0,0.18);
 }
+
 
 .flavor-subtitle {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   text-align: center;
   line-height: 1.6;
   margin-bottom: 2.2rem;
+  color: var(--bg-page);
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.25),
+    0 6px 20px rgba(0,0,0,0.18);
 }
-
 
 /* =========================
    LAYOUT
@@ -41,9 +52,10 @@
   align-items: center;
 }
 
+/* höher gemacht, damit Bild + Bullet-Points reinpassen */
 .flavor-stack {
   position: relative;
-  height: 250px;   
+  height: 400px;
   width: 100%;
   max-width: 680px;
   margin-inline: auto;
@@ -57,14 +69,14 @@
 .flavor-card {
   position: absolute;
   inset: 0;
-  padding: 20px;
+  padding: 20px 22px;
   border-radius: 20px;
 
   background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.32),
-      rgba(255, 255, 255, 0.12)
-    );
+    145deg,
+    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.12)
+  );
   border: 1px solid rgba(255, 255, 255, 0.55);
 
   box-shadow:
@@ -85,7 +97,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   height: 100%;
 }
 
@@ -97,14 +109,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 58%;
+  max-width: 55%;
 }
 
+/* weniger vertikaler wasted space: kein extra margin-top mehr */
 .flavor-card-text h3 {
   font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: #0f172a;
   margin-left: 2rem;
 }
@@ -114,7 +127,7 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--flavor-accent);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   margin-left: 2rem;
 }
 
@@ -122,8 +135,37 @@
   font-size: 0.9rem;
   line-height: 1.55;
   color: #334155;
-  margin-top: 2rem;
+  margin-top: 0.8rem;
   margin-left: 2rem;
+  margin-bottom: 0;
+}
+
+/* Bullet-Points für Inhaltsstoffe */
+
+.flavor-facts {
+  margin-top: 0.9rem;
+  margin-left: 2rem;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #0f172a;
+}
+
+.flavor-facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.flavor-facts li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--flavor-accent);
+
 }
 
 /* =========================
@@ -137,8 +179,8 @@
 }
 
 .flavor-card-media img {
-  max-width: 190px;
-  width: 55%;
+  max-width: 210px;
+  width: 60%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 16px 22px rgba(15, 23, 42, 0.45));
@@ -161,8 +203,6 @@
   z-index: 2;
 }
 
-
-
 .flavor-card--prev {
   opacity: 0.4;
   transform: translate(-14px, 10px) scale(0.95);
@@ -174,6 +214,10 @@
   transform: translateY(14px) scale(0.92);
   z-index: 0;
 }
+
+/* =========================
+   NAV BUTTONS
+   ========================= */
 
 .flavor-nav {
   position: absolute;
@@ -197,8 +241,12 @@
 }
 
 /* Standard: nah an den Kartenkanten (mobile & desktop) */
-.flavor-prev { left: -6rem; }
-.flavor-next { right: -6rem; }
+.flavor-prev {
+  left: -6rem;
+}
+.flavor-next {
+  right: -6rem;
+}
 
 /* Icon selbst */
 .flavor-nav img {
@@ -218,21 +266,27 @@
   transform: scale(1.08);
 }
 
-
-
 /* =========================
    RESPONSIVE
    ========================= */
 
 @media (min-width: 768px) {
-  .flavor-stack { height: 260px; }
+  .flavor-stack {
+    height: 330px;
+  }
 
   .flavor-card-media img {
-    max-width: 220px;
+    max-width: 240px;
     width: 100%;
   }
 }
 
 @media (min-width: 1024px) {
-  .flavor-stack { height: 280px; }
+  .flavor-stack {
+    height: 400px;
+  }
+
+  .flavor-card-media img {
+    max-width: 360px;
+  }
 }

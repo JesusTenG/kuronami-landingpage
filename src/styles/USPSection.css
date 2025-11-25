@@ -33,6 +33,48 @@
   fill: var(--bg-page); /* z.B. #f5f5f7 */
 }
 
+/* =========================
+   SECTION HEADING
+   ========================= */
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+/* gleiche Optik wie FlavorShowcase-Headline */
+.section-heading h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+
+  margin-bottom: 0.5rem;
+  padding-inline: 6px;
+
+  text-shadow:
+    0 3px 10px rgba(0,0,0,0.25),
+    0 6px 20px rgba(0,0,0,0.18);
+}
+
+/* gleiche Logik wie Flavor-Subtitle, aber leicht entsättigt für Mint-BG */
+.section-heading p {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 640px;
+
+  color: var(--bg-page); /* heller Kontrast auf Mint */
+  text-shadow:
+    0 3px 10px rgba(0,0,0,0.25),
+    0 6px 20px rgba(0,0,0,0.18);
+}
+
+/* =========================
+   GRID
+   ========================= */
+
 /* Grid: mobile 1 Spalte, ab Tablet direkt 3 Spalten */
 .usp-grid {
   display: grid;
@@ -49,8 +91,8 @@
   /* Glassy auf Mint-Background */
   background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.04)
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0.12)
     );
   border: 1px solid rgba(255, 255, 255, 0.32);
 
@@ -63,7 +105,7 @@
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
-    background 0.18s ease;
+    background 0.18s ease;  
 }
 
 .usp-card:hover {
@@ -73,8 +115,8 @@
     inset 0 0 18px rgba(255, 255, 255, 0.18);
   background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.24),
-      rgba(255, 255, 255, 0.06)
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0.12)
     );
 }
 
@@ -87,7 +129,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 /* Wenn du Icons als img nutzt */

@@ -57,7 +57,7 @@
   overflow: hidden;
   border-top: 2px solid var(--flavor-bg);
   border-bottom: 2px solid var(--flavor-bg);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+  transition: border-color 0.5s ease;
 }
 
 /* =========================
@@ -65,29 +65,63 @@
    ========================= */
 
 .mosaic-piece {
+  border: 12px solid var(--flavor-bg);
+  box-sizing: border-box;
+  transition: border-color 0.5s ease;
   position: absolute;
   top: 0;
   height: 100%;
   width: 20%;
   background-size: cover;
   background-position: center;
-  opacity: 1;
-  transition: opacity 0.6s ease, background-image 0.6s ease;
+
+  /* Start state */
+  opacity: 0;
+  transform: scale(1.04) translateY(8px);
+  filter: blur(4px);
+
+  /* Smooth appearance */
+  animation: mosaicFadeIn 1.4s ease forwards;
 }
 
 /* 5 Spalten horizontal */
-
 .mosaic-piece--1 { left: 0%; }
 .mosaic-piece--2 { left: 20%; }
 .mosaic-piece--3 { left: 40%; }
 .mosaic-piece--4 { left: 60%; }
 .mosaic-piece--5 { left: 80%; }
 
-/* Mobile */
-
-@media (max-width: 640px) {
-  .gallery-mosaic {
-    aspect-ratio: 4 / 3;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+@keyframes mosaicFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(3px);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 }
+
+.mosaic-piece {
+  animation: mosaicFadeIn 3.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes mosaicFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+}
+
+.mosaic-piece--out {
+  animation: mosaicFadeOut 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
