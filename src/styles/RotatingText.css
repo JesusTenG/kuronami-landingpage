@@ -1,0 +1,21 @@
+/* src/styles/RotatingText.css */
+
+.rotator-text {
+  display: block;
+  white-space: normal;
+  animation: rt-slide-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1); /* easeOutQuint Vibes */
+  transform-origin: left center;
+}
+
+@keyframes rt-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
