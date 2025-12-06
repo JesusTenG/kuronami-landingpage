@@ -1,3 +1,4 @@
+// src/components/Navbar.jsx
 import "../styles/Navbar.css";
 import { useState, useEffect } from "react";
 
@@ -23,7 +24,7 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = () => {
-    setIsOpen(false); // Mobile-Menü schließen nach Klick
+    setIsOpen(false);
   };
 
   return (

@@ -100,71 +100,60 @@
 
 .story-rotator-wrapper {
   display: flex;
-  flex-wrap: nowrap;              /* <- KEIN Wrap mehr auf Desktop */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin: 24px auto 36px;
   max-width: 960px;
   padding: 0 12px;
-  min-height: 7rem;
+  background-color: rgb(255, 255, 255);
+  min-height: 5rem;
+  border-radius: 1rem;
 }
 
-/* Steady Text: größer, fetter, „artsy“ Font */
 .story-rotator-label {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-main);
   font-family: "Josefin Sans", system-ui, -apple-system, BlinkMacSystemFont,
     "Inter", sans-serif;
-  white-space: nowrap;            /* <- der feste Part bricht nicht um */
+  white-space: nowrap;
 }
 
-/* Rotierender Pill-Block – Basisstyles, Farben kommen jetzt aus inline style */
-.story-rotator-pill {
-  display: inline-flex;
+/* Sichtbarer lila Block */
+.story-rotator-main {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  text-transform: uppercase;
-  text-align: left;
-
-  /* Farben werden via style={} gesetzt, also hier nur Fallback */
-  background: #ffffff;
-  border: 1px solid var(--border-soft);
-  color: #111827;
-
-  /* Smooth Transition zwischen den Flavor-States */
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.25s ease;
-
-  max-width: 520px;
+  padding: 0.95rem 1.4rem;
+  border-radius: 0.75rem;
+  background: var(--accent);
+  color: #000000;
+  overflow: hidden;
+  white-space: nowrap; /* eine Zeile */
 }
 
-/* kleiner „Pop“ bei jedem Flavor-Wechsel durch key={activeIndex} */
-.story-rotator-pill {
-  animation: pill-pop 0.3s ease-out;
+/* Wrapper, dessen width wir animieren */
+.story-rotator-main-outer {
+  display: inline-flex;
+  align-items: center;
 }
 
-@keyframes pill-pop {
-  from {
-    transform: translateY(4px) scale(0.97);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+/* Unsichtbarer Mess-Span: gleiche Styles, aber off-screen */
+.story-rotator-main-measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  left: -9999px;
+  top: 0;
+}
+
+/* entspricht splitLevelClassName="overflow-hidden pb-..." */
+.story-rotator-split {
+  overflow: hidden;
 }
 
 
@@ -224,6 +213,7 @@
    RESPONSIVE
    ========================= */
 
+/* Mobile: untereinander stapeln */
 @media (max-width: 600px) {
   .story-rotator-wrapper {
     flex-direction: column;
@@ -233,12 +223,8 @@
   .story-rotator-label {
     text-align: center;
   }
-
-  .story-rotator-pill {
-    max-width: 100%;
-    text-align: center;
-  }
 }
+
 
 @media (min-width: 768px) {
   .story-inner {

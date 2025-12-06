@@ -1,21 +1,65 @@
 /* src/styles/RotatingText.css */
 
-.rotator-text {
-  display: block;
-  white-space: normal;
-  animation: rt-slide-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1); /* easeOutQuint Vibes */
-  transform-origin: left center;
+.text-rotate {
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  position: relative;
 }
 
-@keyframes rt-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.96);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
+.text-rotate-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-rotate-word {
+  display: inline-flex;
+}
+
+.text-rotate-lines {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.text-rotate-element {
+  display: inline-block;
+}
+
+.text-rotate-space {
+  white-space: pre;
+}
+
+
+/* ============================================
+   CUSTOM TYPOGRAPHY FOR ROTATING TEXT
+   ============================================ */
+
+/* Wrapper: sorgt für konsistente Schrift überall */
+.text-rotate,
+.text-rotate-word,
+.text-rotate-element {
+  font-family: "Inter", sans-serif;   /* oder Josefin Sans */
+  font-weight: 900;                   /* fetter Look */
+  color: #ffffff;                     /* weiße Schrift */
+  letter-spacing: -0.02em;             /* leicht techy */
+  line-height: 1.2;
+  font-size: 1.3rem;
+}
+
+/* Falls du willst, dass der steady Text genauso aussieht */
+.story-rotator-label {
+  font-family: "Inter", sans-serif;   /* gleiche Schrift wie Rotate */
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  font-size: 1.3rem;
 }

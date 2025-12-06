@@ -1,6 +1,30 @@
+import { useEffect, useState } from "react";
 import "../styles/Hero.css";
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const PARALLAX_STRENGTH = 0.65;
+  const clampedScroll = Math.min(scrollY, 600);
+  const translateY = clampedScroll * -PARALLAX_STRENGTH;
+
   return (
     <section id="hero" className="hero">
       <div className="section-inner hero-inner">
@@ -22,7 +46,6 @@ export default function Hero() {
 
           <div className="hero-buttons">
             <a href="#flavors" className="btn-primary">Explore Flavors</a>
-            <a href="#story" className="btn-secondary">Read the Concept</a>
           </div>
         </div>
 
@@ -31,6 +54,9 @@ export default function Hero() {
             src="/assets/kuronami-can-mint.png"
             alt="KuroNami Drift Fuel – mint concept can"
             className="hero-can-img"
+            style={{
+              transform: `translateY(${translateY}px)`,
+            }}
           />
         </div>
       </div>

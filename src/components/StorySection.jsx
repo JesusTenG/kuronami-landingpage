@@ -1,57 +1,36 @@
 // src/components/StorySection.jsx
-import { useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import "../styles/StorySection.css";
 import RotatingText from "./RotatingText";
-import { flavors } from "../data/flavors"; // Pfad ggf. anpassen
 
 export default function StorySection() {
-  // 🔥 Mapping: welcher Satz gehört zu welchem Flavor?
-  const flavorLines = [
-    {
-      flavorId: "mint",
-      text: "the clean spark cutting through your day.",
-    },
-    {
-      flavorId: "citrus",
-      text: "the bright kick that pulls you forward.",
-    },
-    {
-      flavorId: "purple",
-      text: "the cool flow that keeps you moving.",
-    },
-    {
-      flavorId: "strawberry",
-      text: "the bold boost that hits you different.",
-    },
-    {
-      flavorId: "peach",
-      text: "the warm shift that lifts your mood.",
-    },
+  const rotatingLines = [
+    "the clean spark cutting through your day.",
+    "the bright kick that pulls you forward.",
+    "the neon rush for heavy late nights.",
+    "the smooth slipstream for calm focus.",
+    "the loud hit when you need one more lap.",
   ];
 
+  // Aktueller Index vom RotatingText
   const [activeIndex, setActiveIndex] = useState(0);
+  // Zielbreite für den lila Block
+  const [pillWidth, setPillWidth] = useState(null);
+  const measureRef = useRef(null);
 
-  // Aktive Flavor-Config aus flavors[] ziehen
-  const activeFlavor = useMemo(() => {
-    const current = flavorLines[activeIndex];
-    if (!current) return null;
-    return (
-      flavors.find((f) => f.id === current.flavorId) ?? null
-    );
-  }, [activeIndex]);
-
-  // Inline-Styles aus hex-Config ableiten
-  const pillStyle = activeFlavor
-    ? {
-        background: activeFlavor.hex.bg,
-        borderColor: activeFlavor.hex.accent,
-        boxShadow: `0 14px 40px ${activeFlavor.hex.glow}`,
-        color: "#ffffff", // bei deinen Colors ist White gut lesbar
+  // Immer wenn sich der Text-Index ändert, Breite neu messen
+    useEffect(() => {
+      if (measureRef.current) {
+        const base = measureRef.current.offsetWidth;
+        const extra = base * 0.10; // +10%
+        setPillWidth(base + extra);
       }
-    : {};
+    }, [activeIndex]);
 
   return (
     <section id="story" className="story-section">
+      {/* Top Wave */}
       <div className="custom-shape-divider-top-story">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +45,7 @@ export default function StorySection() {
       </div>
 
       <div className="section-inner story-inner">
-        {/* Heading */}
+        {/* HEADING */}
         <div className="story-heading">
           <span className="story-tagline">Design case study</span>
           <h2 className="story-title">The Concept Behind Kuronami</h2>
@@ -76,29 +55,49 @@ export default function StorySection() {
           </p>
         </div>
 
-        {/* 🔁 Flavor Rotator */}
+        {/* ROTATING TEXT BLOCK */}
         <div className="story-rotator-wrapper">
           <span className="story-rotator-label">Kuronami Drift Fuel is</span>
 
-          <span
-            key={activeIndex} // ⬅️ triggert auch Pill-Animation bei jedem Wechsel
-            className="story-rotator-pill"
-            style={pillStyle}
+          {/* Dieser Wrapper animiert die Breite smooth */}
+          <motion.div
+            className="story-rotator-main-outer"
+            style={{ width: pillWidth || "auto" }}
+            animate={{ width: pillWidth || "auto" }}
+            initial={false}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
           >
             <RotatingText
-              texts={flavorLines.map((item) => item.text)}
-              interval={2600}            // ⬅️ Geschwindigkeit in ms
-              onIndexChange={setActiveIndex}
+              texts={rotatingLines}
+              mainClassName="story-rotator-main"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="story-rotator-split"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={5000}
+              // <- Hier holen wir uns den aktuellen Index
+              onNext={(idx) => setActiveIndex(idx)}
             />
+          </motion.div>
+
+          {/* Unsichtbarer Mess-Span, um die Breite für den aktuellen Text zu messen */}
+          <span
+            ref={measureRef}
+            className="story-rotator-main story-rotator-main-measure"
+          >
+            {rotatingLines[activeIndex]}
           </span>
         </div>
 
-        {/* Body */}
+        {/* BODY */}
         <div className="story-body">
           <p className="story-text">
             Kuronami connects packaging logic, motion language and UI components
-            into a unified system. Every flavor defines its own accent, mood,
-            and interaction rules — and these propagate across the interface.
+            into a unified system. Every flavor defines its own accent, mood and
+            interaction rules — and these propagate across the interface.
           </p>
           <p className="story-text">
             The goal is to demonstrate how branding, system thinking and
@@ -106,7 +105,7 @@ export default function StorySection() {
           </p>
         </div>
 
-        {/* Meta */}
+        {/* META INFO */}
         <div className="story-meta">
           <div className="story-meta-item">
             <span className="story-meta-label">System</span>

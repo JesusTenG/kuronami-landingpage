@@ -1,0 +1,115 @@
+.partnerstrip-section {
+  margin-top: 4rem;
+  width: 100%;
+  padding: 32px 0 28px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partnerstrip-content {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.partnerstrip-title {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-main);
+}
+
+.partnerstrip-title span {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.partnerstrip-marquee-wrapper {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 18px 0;
+  box-shadow: none;
+}
+
+/* zusätzlicher Wrapper für Overflow */
+.partnerstrip-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* TRACK – doppelte Logos, bewegt sich endlos */
+
+.partnerstrip-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  will-change: transform;
+
+  /* Kern: Infinity-Slide */
+  animation: partnerstrip-scroll 30s linear infinite;
+}
+
+/* Logos: nicht flexen, konstant bleiben */
+.partnerstrip-logo {
+  flex: 0 0 auto;
+  height: 100px;
+  margin-right: 96px;
+  opacity: 0.78;
+  filter: grayscale(100%);
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+.partnerstrip-logo:last-child {
+  margin-right: 0;
+}
+
+.partnerstrip-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: translateY(-2px);
+}
+
+/* Infinity-Keyframes: 0% = erster Satz sichtbar,
+   100% = zweiter Satz an exakt derselben Position → kein Sprung */
+@keyframes partnerstrip-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hover: smooth Stop statt Speed-Glitch */
+.partnerstrip-marquee-wrapper:hover .partnerstrip-track {
+  animation-play-state: paused;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .partnerstrip-logo {
+    height: 56px;
+    margin-right: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  .partnerstrip-logo {
+    height: 42px;
+    margin-right: 52px;
+  }
+}

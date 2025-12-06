@@ -6,6 +6,7 @@ import FlavorShowcase from "./components/FlavorShowcase";
 import Gallery from "./components/Gallery";
 import StorySection from "./components/StorySection";
 import CTASection from "./components/CTASection";
+import PartnerStrip from "./components/PartnerStrip";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <FlavorShowcase />
       <Gallery />
       <StorySection />
+      <PartnerStrip />
       <CTASection />
     </>
   );
