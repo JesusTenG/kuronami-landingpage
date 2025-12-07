@@ -40,9 +40,9 @@
    ========================= */
 
 .gallery-hero-band {
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  margin-left: 0;
+  transform: none;
   margin-top: 24px;
   padding: 2rem;
 }
@@ -127,3 +127,10 @@
   animation: mosaicFadeOut 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+@media (min-width: 1024px) {
+  .gallery-hero-band {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}

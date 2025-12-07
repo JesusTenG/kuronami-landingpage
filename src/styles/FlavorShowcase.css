@@ -270,23 +270,25 @@
    RESPONSIVE
    ========================= */
 
-@media (min-width: 768px) {
-  .flavor-stack {
-    height: 330px;
+/* Mobile-Schutz */
+@media (max-width: 768px) {
+  .flavor-nav {
+    width: 64px;
+    height: 64px;
   }
 
-  .flavor-card-media img {
-    max-width: 240px;
-    width: 100%;
+  .flavor-nav img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .flavor-prev {
+    left: 0.25rem;   /* statt -6rem */
+  }
+
+  .flavor-next {
+    right: 0.25rem;  /* statt -6rem */
   }
 }
 
-@media (min-width: 1024px) {
-  .flavor-stack {
-    height: 400px;
-  }
 
-  .flavor-card-media img {
-    max-width: 360px;
-  }
-}

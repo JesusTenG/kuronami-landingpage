@@ -28,7 +28,7 @@ export const flavors = [
     description:
       "Dense neon-berry profile with a high-octane caffeine kick. Built for heavy playlists, long sprints and unapologetic energy spikes.",
     hex: {
-      bg: "#7b3ac0ff",
+      bg: "#9c5edfff",
       accent: "#8f52d6",
       glow: "#e0c8ff"
     },

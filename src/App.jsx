@@ -7,6 +7,7 @@ import Gallery from "./components/Gallery";
 import StorySection from "./components/StorySection";
 import CTASection from "./components/CTASection";
 import PartnerStrip from "./components/PartnerStrip";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <StorySection />
       <PartnerStrip />
       <CTASection />
+      <Footer />
     </>
   );
 }
