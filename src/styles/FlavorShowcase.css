@@ -179,8 +179,8 @@
 }
 
 .flavor-card-media img {
-  max-width: 210px;
-  width: 60%;
+  max-width: 350px;
+  width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 16px 22px rgba(15, 23, 42, 0.45));
@@ -271,24 +271,176 @@
    ========================= */
 
 /* Mobile-Schutz */
-@media (max-width: 768px) {
-  .flavor-nav {
-    width: 64px;
-    height: 64px;
-  }
+.flavor-stack {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+  overflow: visible;
+}
 
-  .flavor-nav img {
-    width: 28px;
-    height: 28px;
-  }
+/* ... */
 
-  .flavor-prev {
-    left: 0.25rem;   /* statt -6rem */
-  }
+.flavor-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 
-  .flavor-next {
-    right: 0.25rem;  /* statt -6rem */
-  }
+  width: 98px;
+  height: 98px;
+
+  border-radius: 50%;
+  background: transparent;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Standard: nah an den Kartenkanten (mobile & desktop) */
+.flavor-prev {
+  left: -6rem;
+}
+.flavor-next {
+  right: -6rem;
+}
+
+.flavor-card-headline {
+  display: flex;
+  flex-direction: column;
+}
+
+.flavor-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+  /* Stack enger und kontrolliert – Basis für den Mobile-Stack */
+  .flavor-stack {
+    height: 310px;          /* bei Bedarf auf 460/480 erhöhen */
+    max-width: 340px;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .flavor-card {
+    padding: 14px 16px 16px;
+    border-radius: 18px;
+  }
+
+  /* Innerer Container: wir arbeiten mit relativer Position,
+     damit wir unten Dose + Ingredients absolut platzieren können */
+  .flavor-card-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* OBEN: Headline, Subline, Text – vollbreit & linksbündig */
+  .flavor-card-text {
+    max-width: 100%;
+    padding-right: 0;
+    padding-bottom: 130px; /* Platz lassen für Dose+Ingredients unten */
+  }
+
+  .flavor-card-headline h3,
+  .flavor-card-headline .flavor-sub,
+  .flavor-card-body p {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .flavor-card-headline h3 {
+    font-size: 0.96rem;
+    letter-spacing: 0.12em;
+  }
+
+  .flavor-card-headline .flavor-sub {
+    font-size: 0.76rem;
+  }
+
+  .flavor-card-body p {
+    font-size: 0.86rem;
+    margin-top: 0.35rem;
+  }
+
+  /* UNTEN: Dose links, Ingredients rechts */
+  .flavor-card-media {
+    position: absolute;
+    left: 12px;
+    bottom: 14px;
+    width: 44%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden; /* gezoomte Dose wird „angeschnitten“ */
+  }
+
+  .flavor-card-media img {
+    max-width: 260px;
+    width: 100%;
+    transform: scale(1.05);          /* Zoom */
+    transform-origin: center center;
+    filter: drop-shadow(0 16px 22px rgba(15, 23, 42, 0));
+  }
+
+  .flavor-facts {
+    position: absolute;
+    right: 12px;
+    bottom: 14px;
+    width: 48%;
+    font-size: 0.76rem;
+    gap: 4px;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .flavor-facts li {
+    align-items: flex-start;
+  }
+
+  /* MOBILE-STACK-EFFEKT:
+     - nur aktuelle Karte und die NÄCHSTE sichtbar
+     - vorherige + hidden sind unsichtbar
+  */
+
+  .flavor-card--active {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    z-index: 3;
+  }
+
+  .flavor-card--next {
+    opacity: 0.75;
+    transform: translate(4%, 3%) scale(0.96); /* 4% rechts, 3% unten */
+    z-index: 2;
+  }
+
+  /* vorherige und „hidden“ werden komplett ausgeblendet */
+  .flavor-card--prev,
+  .flavor-card--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(0, 10%) scale(0.9);
+  }
+
+  /* Pfeile auf Mobile komplett weg – Interaktion = Swipe */
+  .flavor-nav {
+    display: none;
+  }
+
+}

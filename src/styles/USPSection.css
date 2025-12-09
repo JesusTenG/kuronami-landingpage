@@ -11,6 +11,7 @@
 
 /* WAVE DIVIDER – full width */
 .custom-shape-divider-top-usp {
+  margin-top: -1px;
   position: absolute;
   top: 0;
   left: 0;

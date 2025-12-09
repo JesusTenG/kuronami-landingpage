@@ -28,7 +28,11 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+    <header
+      className={`navbar ${scrolled ? "navbar--scrolled" : ""} ${
+        isOpen ? "navbar--open" : ""
+      }`.trim()}
+    >
       <div className="navbar-inner">
         <a href="#hero" className="navbar-logo" onClick={handleNavClick}>
           <span className="navbar-logo-main">KURONAMI</span>
@@ -36,7 +40,9 @@ export default function Navbar() {
         </a>
 
         <button
-          className="navbar-toggle"
+          className={`navbar-toggle ${
+            isOpen ? "navbar-toggle--open" : ""
+          }`.trim()}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-label="Toggle navigation"

@@ -8,6 +8,8 @@ import StorySection from "./components/StorySection";
 import CTASection from "./components/CTASection";
 import PartnerStrip from "./components/PartnerStrip";
 import Footer from "./components/Footer";
+import Ticker from "./components/Ticker";
+import QualitySection from "./components/QualitySection";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       <Navbar />
       <Hero />
       <USPSection />
+      <Ticker />
       <FlavorShowcase />
+      <QualitySection />
       <Gallery />
       <StorySection />
       <PartnerStrip />

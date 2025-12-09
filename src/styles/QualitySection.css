@@ -1,0 +1,184 @@
+/* =========================
+   QUALITY SECTION
+   ========================= */
+
+.quality-section {
+  background: var(--flavor-bg);
+  color: var(--bg-page);
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+/* LEFT COPY */
+
+.quality-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: rgba(248, 250, 252, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.quality-heading {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  color: #f9fafb;
+}
+
+.quality-heading span {
+  display: block;
+  color: #e5f4ff; /* leichter Akzent im zweiten Teil */
+}
+
+.quality-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  color: rgba(241, 245, 249, 0.9);
+}
+
+.quality-body--muted {
+  color: rgba(226, 232, 240, 0.8);
+}
+
+/* ============================
+   KPI GRID – RIGHT SIDE
+============================ */
+
+.quality-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-left: 40px;
+  border-left: 1.6px dotted rgba(255, 255, 255, 0.45);
+  margin-left: 40px;
+
+  /* leichte Transparenz für Apple-Vibe */
+  backdrop-filter: blur(4px);
+}
+
+.quality-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Label – sehr clean, sehr minimal */
+.quality-stat-label span {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* Zahl + Prozent – groß, elegant */
+.quality-stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.quality-stat-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.quality-stat-suffix {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+/* =========================================
+   MOBILE – Vollständig zentriert & clean
+========================================= */
+
+@media (max-width: 768px) {
+
+  .quality-section {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .quality-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    padding: 0 22px;
+  }
+
+  /* TEXTBLOCK LINKS → jetzt 100% zentriert */
+  .quality-copy {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .quality-heading {
+    text-align: center;
+    font-size: clamp(1.6rem, 6vw, 2.3rem);
+  }
+
+  .quality-body,
+  .quality-body--muted {
+    text-align: center;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* KPI-Spalte gesamt zentrieren */
+  .quality-stats {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+
+    border-left: none;
+    border-top: 1.6px dotted rgba(255, 255, 255, 0.35);
+
+    padding-top: 28px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Einzelne KPI-Zeile */
+  .quality-stat {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .quality-stat-number {
+    font-size: 2.6rem;
+  }
+
+  .quality-stat-suffix {
+    font-size: 1.3rem;
+  }
+
+  .quality-stat-label span {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+}

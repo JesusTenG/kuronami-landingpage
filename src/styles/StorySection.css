@@ -5,7 +5,7 @@
 /* Section selbst läuft auf dem globalen Hintergrund (bg-page / weiß) */
 .story-section {
   position: relative;
-  padding-top: 220px;
+  padding-top: 200px;
   padding-bottom: 90px;
   transition: background 0.5s ease;
   overflow: hidden;
@@ -33,6 +33,7 @@
 /* Wellenfarbe = Flavor-Background (Mint oder anderer Flavor) */
 .custom-shape-divider-top-story .shape-fill {
   fill: var(--flavor-bg);
+  transition: fill 0.5s ease;
 }
 
 /* =========================
@@ -107,7 +108,7 @@
   margin: 24px auto 36px;
   max-width: 960px;
   padding: 0 12px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg-page);
   min-height: 5rem;
   border-radius: 1rem;
 }
@@ -231,6 +232,14 @@
     text-align: left;
     padding: 60px 24px 0;
   }
+
+  .story-section {
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 90px;
+  transition: background 0.5s ease;
+  overflow: hidden;
+}
 
   .story-heading,
   .story-body,

@@ -72,7 +72,8 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 18%;
+  width: 18%;                 /* bleibt 18% */
+
   background-size: cover;
   background-position: center;
   border-radius: 2rem;
@@ -86,12 +87,14 @@
   animation: mosaicFadeIn 1.4s ease forwards;
 }
 
-/* 5 Spalten horizontal */
-.mosaic-piece--1 { left: 0%; }
-.mosaic-piece--2 { left: 20%; }
-.mosaic-piece--3 { left: 40%; }
-.mosaic-piece--4 { left: 60%; }
-.mosaic-piece--5 { left: 80%; }
+/* 5 Spalten horizontal – symmetrisch im Container */
+/* 5 * 18% = 90%, es bleiben 10% -> wir verteilen je 1% links und rechts + 4x 2% Abstand */
+.mosaic-piece--1 { left: 1%; }
+.mosaic-piece--2 { left: 21%; }
+.mosaic-piece--3 { left: 41%; }
+.mosaic-piece--4 { left: 61%; }
+.mosaic-piece--5 { left: 81%; }
+
 
 @keyframes mosaicFadeIn {
   0% {
@@ -129,8 +132,97 @@
 
 @media (min-width: 1024px) {
   .gallery-hero-band {
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .gallery-hero-band {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+    margin-top: 16px;
+    padding: 1.5rem 0 1.25rem;
+  }
+
+    .gallery-section {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    background: var(--flavor-bg);
+    transition: background 0.5s ease;
+    padding-bottom: 0;
+  }
+  .gallery-mosaic {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 24px;
+
+    aspect-ratio: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* Kacheln als vertikale Cards, leicht schmaler als der Container */
+  .mosaic-piece {
+    position: relative;
+    top: auto;
+    left: auto;
+
+    width: 88%;               /* < 100%, damit Platz für Versatz bleibt */
+    height: 150px;
+    margin: 0 auto;           /* Basis: mittig */
+
+    border-radius: 1.4rem;
+    box-sizing: border-box;
+    border-width: 4px;
+
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+
+  }
+
+ /* 1: Hero-Kachel leicht breiter, zentral */
+  .mosaic-piece--1 {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 2: leicht nach links versetzt */
+  .mosaic-piece--2 {
+    width: 95%;
+    margin-right: auto;
+  }
+
+  /* 3: leicht nach rechts versetzt */
+  .mosaic-piece--3 {
+    width: 90%;
+    margin-left: auto;
+  }
+
+  /* 4: etwas stärker nach links, wirkt wie „tiefer“ im Stack */
+  .mosaic-piece--4 {
+    width: 85%;
+    margin-right: auto;
+  }
+
+  /* 5: etwas kleiner & nach rechts versetzt – Abschluss */
+  .mosaic-piece--5 {
+    width: 80%;
+    margin-left: auto;
   }
 }

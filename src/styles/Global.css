@@ -2,6 +2,10 @@
 
 /* ============ RESET & BASICS ============ */
 
+section + section {
+  margin-top: -1px;
+}
+
 *,
 *::before,
 *::after {
@@ -157,3 +161,5 @@ section {
     padding: 96px 0;
   }
 }
+
+

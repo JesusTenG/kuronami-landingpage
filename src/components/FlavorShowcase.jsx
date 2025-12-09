@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function FlavorShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
   const activeFlavor = flavors[activeIndex];
 
   useEffect(() => {
@@ -25,6 +26,34 @@ export default function FlavorShowcase() {
       prev === 0 ? flavors.length - 1 : prev - 1
     );
   };
+
+  const SWIPE_THRESHOLD = 40;
+
+const handleTouchStart = (e) => {
+  if (!e.touches || e.touches.length === 0) return;
+  setTouchStartX(e.touches[0].clientX);
+};
+
+const handleTouchEnd = (e) => {
+  if (touchStartX === null) return;
+  if (!e.changedTouches || e.changedTouches.length === 0) return;
+
+  const endX = e.changedTouches[0].clientX;
+  const diffX = endX - touchStartX;
+
+  if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+    if (diffX < 0) {
+      // nach links wischen -> nächster Flavor
+      handleNext();
+    } else {
+      // nach rechts wischen -> vorheriger Flavor
+      handlePrev();
+    }
+  }
+
+  setTouchStartX(null);
+};
+
 
   const getPositionClass = (index) => {
     const lastIndex = flavors.length - 1;
@@ -59,7 +88,10 @@ export default function FlavorShowcase() {
         </p>
 
         <div className="flavor-slider">
-          <div className="flavor-stack">
+          <div  className="flavor-stack"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
             <button className="flavor-nav flavor-prev" onClick={handlePrev}>
               <img src="/icons/leftarrow.svg" alt="Previous flavor" />
             </button>
@@ -74,17 +106,22 @@ export default function FlavorShowcase() {
                 >
                   <div className="flavor-card-inner">
                     <div className="flavor-card-text">
-                      <h3>{flavor.name}</h3>
-                      <span className="flavor-sub">{flavor.subtitle}</span>
-                      <p>{flavor.description}</p>
+                      <div className="flavor-card-headline">
+                        <h3>{flavor.name}</h3>
+                        <span className="flavor-sub">{flavor.subtitle}</span>
+                      </div>
 
-                      {flavor.facts && flavor.facts.length > 0 && (
-                        <ul className="flavor-facts">
-                          {flavor.facts.map((fact, i) => (
-                            <li key={i}>{fact}</li>
-                          ))}
-                        </ul>
-                      )}
+                      <div className="flavor-card-body">
+                        <p>{flavor.description}</p>
+
+                        {flavor.facts && flavor.facts.length > 0 && (
+                          <ul className="flavor-facts">
+                            {flavor.facts.map((fact, i) => (
+                              <li key={i}>{fact}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                     </div>
 
                     {flavor.image && (

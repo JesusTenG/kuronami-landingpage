@@ -1,0 +1,66 @@
+/* ============================
+   TICKER SECTION
+============================ */
+
+.ticker-section {
+  width: 100%;
+  padding: 40px 0;
+  background: var(--flavor-bg);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* Beide Zeilen als Block übereinander */
+.ticker-line {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-line span {
+  display: inline-block;
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--bg-page);      /* oder Wunschfarbe */
+  letter-spacing: 0.05em;
+  padding: 0 2rem;
+}
+
+
+/* Obere Zeile: Animation von links → rechts → links */
+.ticker-line--top span {
+  animation: tickerLeftRight 60s ease-in-out infinite alternate;
+}
+
+/* Untere Zeile: Animation von rechts → links → rechts */
+.ticker-line--bottom span {
+  animation: tickerRightLeft 60s ease-in-out infinite alternate;
+}
+
+/* Ping-Pong Keyframes */
+@keyframes tickerLeftRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-40%); }
+}
+
+@keyframes tickerRightLeft {
+  0% { transform: translateX(-40%); }
+  100% { transform: translateX(0); }
+}
+
+/* ============================
+   MOBILE TICKER BOOST
+============================ */
+@media (max-width: 768px) {
+
+  .ticker-section {
+    padding: 0px 0; /* etwas kompakter, aber nicht zu klein */
+  }
+
+  .ticker-line span {
+    font-size: clamp(4rem, 8vw, 3rem); 
+    font-weight: 900; /* maximal bold für mobile impact */
+    letter-spacing: 0.03em;
+  }
+}

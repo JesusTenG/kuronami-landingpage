@@ -105,6 +105,17 @@
     height: 56px;
     margin-right: 72px;
   }
+
+  .partnerstrip-section {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 0px 0 0px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
 @media (max-width: 600px) {
