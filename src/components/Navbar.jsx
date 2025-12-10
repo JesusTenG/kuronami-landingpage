@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "#hero", label: "Home" },
-  { href: "#usp", label: "Why Drift Fuel" },
+  { href: "#usp", label: "Benefits" },
   { href: "#flavors", label: "Flavors" },
   { href: "#gallery", label: "Gallery" },
   { href: "#story", label: "Story" },
@@ -27,36 +27,63 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const toggleMenu = () => {
+    setIsOpen(prev => !prev);
+  };
+
   return (
     <header
       className={`navbar ${scrolled ? "navbar--scrolled" : ""} ${
         isOpen ? "navbar--open" : ""
       }`.trim()}
     >
-      <div className="navbar-inner">
-        <a href="#hero" className="navbar-logo" onClick={handleNavClick}>
-          <span className="navbar-logo-main">KURONAMI</span>
-          <span className="navbar-logo-sub">Drift Fuel</span>
-        </a>
+      {/* Glas-Pill */}
+      <div className="navbar-shell">
+        <div className="navbar-inner">
+          <a href="#hero" className="navbar-logo" onClick={handleNavClick}>
+            <span className="navbar-logo-main">KURONAMI</span>
+            <span className="navbar-logo-sub">Drift Fuel</span>
+          </a>
 
-        <button
-          className={`navbar-toggle ${
-            isOpen ? "navbar-toggle--open" : ""
-          }`.trim()}
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          <span />
-          <span />
-        </button>
+          {/* Desktop-Links in der Pill */}
+          <nav
+            className="navbar-links navbar-links-desktop"
+            aria-label="Main navigation"
+          >
+            {navLinks.map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleNavClick}
+                className="navbar-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
+          {/* Burger – nur auf Mobile sichtbar */}
+          <button
+            className={`navbar-toggle ${
+              isOpen ? "navbar-toggle--open" : ""
+            }`.trim()}
+            onClick={toggleMenu}
+            aria-expanded={isOpen}
+            aria-label="Toggle navigation"
+          >
+            <span />
+            <span />
+          </button>
+        </div>
+
+        {/* Mobile-Dropdown – jetzt IMMER innerhalb der Shell */}
         <nav
-          className={`navbar-links ${
-            isOpen ? "navbar-links--open" : ""
+          className={`navbar-links navbar-links-mobile ${
+            isOpen ? "navbar-links-mobile--open" : ""
           }`.trim()}
+          aria-label="Mobile navigation"
         >
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}

@@ -7,44 +7,51 @@
   top: 0;
   z-index: 40;
   width: 100%;
-  padding: 30px 16px; /* Abstand zum Viewport-Rand */
-  background: transparent; /* Kein weißer Balken mehr */
+  padding: 30px 16px;
+  background: transparent;
   border-bottom: none;
+  overflow: visible;
 }
 
-/* innerer Pill-Container */
-
-.navbar-inner {
-  position: relative;
+/* Glas-Pill-Wrapper – DESKTOP-BASIS */
+.navbar-shell {
+  position: relative;      /* Bezug für .navbar-links-mobile */
   max-width: 1100px;
   margin: 0 auto;
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  box-sizing: border-box;
 
-  border-radius: 999px;
+  border-radius: 26px;
   background: rgba(255, 255, 255, 0.38);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
 
   transition:
     background 0.25s ease,
     box-shadow 0.25s ease,
-    transform 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-/* Zustand beim Scrollen – etwas dichter/solider */
+/* Zustand beim Scrollen – DESKTOP */
+.navbar.navbar--scrolled .navbar-shell {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.2);
+}
 
-.navbar.navbar--scrolled .navbar-inner {
-  background: rgba(255, 255, 255, 0.38);
-  border-color: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(26px);
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.18);
+/* Inhalt in der Pill: Logo, Links (Desktop), Burger */
+.navbar-inner {
+  position: relative;
+  padding: 10px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  z-index: 2; /* liegt über dem Mobile-Menü */
 }
 
 /* =========================
@@ -109,13 +116,21 @@
   transform: translateY(-3px) rotate(-45deg);
 }
 
+/* Extra-Kontrolle über Klasse */
+.navbar-toggle--open span:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.navbar-toggle--open span:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
 /* =========================
-   LINKS – BASIS
+   LINKS – BASISSTYLES
    ========================= */
 
 .navbar-links {
   display: flex;
-  flex-direction: row;
   gap: 18px;
 }
 
@@ -127,6 +142,7 @@
     color 0.25s ease,
     transform 0.25s ease;
   text-shadow: 0 0 5px var(--bg-page);
+  text-decoration: none;
 }
 
 .navbar-link:hover {
@@ -138,7 +154,7 @@
 .navbar-link::after {
   content: "";
   position: absolute;
-  bottom: -6px; /* sitzt knapp unter Text */
+  bottom: -6px;
   left: 0;
   width: 0%;
   height: 2px;
@@ -153,100 +169,112 @@
 }
 
 /* =========================
-   MOBILE – PILL + VERBUNDENE CARD, BURGER RECHTS
+   MOBILE
    ========================= */
 
 @media (max-width: 767px) {
-
-  /* Sticky reicht – schiebt nichts, liegt oben */
   .navbar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
     padding: 12px 12px;
     z-index: 100;
   }
 
   .navbar-inner {
-    max-width: 100%;
     padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* wir steuern mit margin-right:auto */
+    justify-content: flex-start;
     gap: 12px;
-    border-radius: 999px;
   }
-  
 
-  /* Logo links, drückt alles rechts davon nach rechts */
   .navbar-logo {
     flex-direction: column;
     gap: 2px;
     margin-right: auto;
   }
 
-  /* Burger steht automatisch ganz rechts */
-  .navbar-toggle {
-    position: relative;
-    z-index: 110;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-left: 0;
+  /* Desktop-Links in der Pill ausblenden */
+  .navbar-links-desktop {
+    display: none;
   }
 
-  .navbar-toggle span {
-    width: 22px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--text-main);
-    transition:
-      transform 0.25s ease,
-      opacity 0.25s ease;
+  /* Im offenen Zustand – nur oben rund, unten gerade */
+  .navbar.navbar--open .navbar-shell {
+    border-radius: 26px 26px 0 0;
+    border-bottom: none;
   }
 
-  /* X-Animation über Klasse aus JSX */
-  .navbar-toggle--open span:nth-child(1) {
-    transform: translateY(4px) rotate(45deg);
+  /* PILL – Mobile: voll weiß, kein Blur, Schatten NUR nach oben */
+  .navbar-shell {
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    /* feine Outline + Schatten nach oben */
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 42, 0.04),   /* dezente Kontur */
+      0 -6px 16px rgba(15, 23, 42, 0.14); /* nur nach oben */
+
+    border-color: rgba(148, 163, 184, 0.45);
   }
 
-  .navbar-toggle--open span:nth-child(2) {
-    transform: translateY(-4px) rotate(-45deg);
+  .navbar.navbar--scrolled .navbar-shell {
+    background: #ffffff;
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 42, 0.04),
+      0 -6px 16px rgba(15, 23, 42, 0.18);
+    border-color: rgba(148, 163, 184, 0.55);
   }
 
-  /* Menü hängt NICHT im Flex-Flow, sonst verschiebt es den Burger */
-  .navbar-links {
+  /* CARD – bündig, gleiche Breite, Schatten nur nach unten
+     ➜ jetzt mit smooth Transition (max-height + opacity) */
+  .navbar-links-mobile {
     position: absolute;
-    top: calc(100% + 6px); /* direkt unter der Pille */
-    left: 0;
-    width: 100%;
+    box-sizing: border-box;
 
-    display: none;             /* Standard: versteckt */
+    left: -1px;
+    right: -1px;
+    top: calc(100% - 1px); /* 1px Überlappung, keine Lücke */
+
+    display: flex;
     flex-direction: column;
     gap: 12px;
+    padding: 18px 18px 20px;
 
-    padding: 12px 18px 18px;
-    border-radius: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
+    border-radius: 0 0 26px 26px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-top: none;
 
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    /* feine Kontur + Schatten nach unten */
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 42, 0.04),
+      0 10px 24px rgba(15, 23, 42, 0.18);
+
+    /* Animation-Setup */
+    max-height: 0;
     opacity: 0;
+    overflow: hidden;
     pointer-events: none;
-    transform: translateY(6px);
+
+    z-index: 1;
     transition:
-      opacity 0.25s ease,
-      transform 0.25s ease;
+      max-height 0.28s ease,
+      opacity 0.22s ease;
   }
 
-  .navbar-links--open {
-    display: flex;
+  .navbar.navbar--scrolled .navbar-links-mobile {
+    background: #ffffff;
+    border-color: rgba(148, 163, 184, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 42, 0.04),
+      0 10px 24px rgba(15, 23, 42, 0.22);
+  }
+
+  .navbar-links-mobile--open {
+    max-height: 420px;   /* genug für deine Links; bei Bedarf anpassen */
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
   }
 
   .navbar-link {
@@ -256,9 +284,20 @@
   }
 }
 
-/* ============ DESKTOP ============ */
+/* =========================
+   DESKTOP
+   ========================= */
 
 @media (min-width: 768px) {
+  .navbar {
+    padding: 30px 16px;
+  }
+
+  .navbar-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
   .navbar-inner {
     padding: 10px 24px;
   }
@@ -277,30 +316,35 @@
     font-size: 0.75rem;
   }
 
-  .navbar-toggle {
+  /* Desktop-Links in der Pill sichtbar */
+  .navbar-links-desktop {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-left: auto;
+  }
+
+  /* Mobile-Menü ausblenden */
+  .navbar-links-mobile {
     display: none;
   }
 
-  .navbar-links {
-    position: static;
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
-    max-height: none;
-    display: flex;
+  /* Burger auf Desktop unsichtbar */
+  .navbar-toggle {
+    display: none;
   }
 
   .navbar-link {
     padding: 0;
     font-size: 0.9rem;
+  }
+
+  /* Desktop – eleganter Scroll-Schatten */
+  .navbar.navbar--scrolled .navbar-shell {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 8px 24px rgba(0, 0, 0, 0.06);
   }
 }
