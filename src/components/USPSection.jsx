@@ -22,7 +22,7 @@ export default function USPSection() {
   return (
     <section id="usp" className="usp-section">
 
-      {/* Wellen – immer außerhalb */}
+      {/* Wellen */}
       <div className="custom-shape-divider-top-usp">
         <svg
           data-name="Layer 1"
@@ -37,7 +37,6 @@ export default function USPSection() {
         </svg>
       </div>
 
-      {/* ALLES hier rein */}
       <div className="section-inner usp-inner">
 
         <div className="section-heading">

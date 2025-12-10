@@ -1,14 +1,9 @@
-/* =========================
-   HERO SECTION – KURO NAMI
-   ========================= */
-
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
   overflow: hidden;
 }
 
-/* Inner Wrapper übernimmt das Flex-Layout */
 .hero-inner {
   display: flex;
   flex-direction: column;
@@ -23,17 +18,10 @@
   padding-bottom: 40px;
 }
 
-
-/* =========================
-   TEXT BLOCK
-   ========================= */
-
 .hero-content {
   max-width: 540px;
   z-index: 2;
 }
-
-/* Tagline über der Headline */
 
 .hero-tagline {
   display: inline-flex;
@@ -54,8 +42,6 @@
   background: var(--accent);
 }
 
-/* Headline */
-
 .hero-content h1 {
   font-size: clamp(2.1rem, 6vw, 2.9rem);
   letter-spacing: 0.16em;
@@ -63,16 +49,12 @@
   margin-bottom: 16px;
 }
 
-/* Subline */
-
 .hero-subtitle {
   font-size: 0.98rem;
   color: var(--text-muted);
   max-width: 460px;
   margin: 0 auto;
 }
-
-/* Badges */
 
 .hero-badges {
   display: flex;
@@ -93,8 +75,6 @@
   color: var(--text-muted);
 }
 
-/* Buttons */
-
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -102,10 +82,6 @@
   gap: 12px;
   margin-top: 24px;
 }
-
-/* =========================
-   CAN / MOCKUP BLOCK
-   ========================= */
 
 .hero-image {
   display: flex;
@@ -115,19 +91,13 @@
   
 }
 
-/* Bild selbst */
 .hero-can-img {
-  width: min(75vw, 530px); /* mobile riesig, desktop capped */
+  width: min(75vw, 530px); 
   height: auto;
   object-fit: contain;
   display: block;
   transform: translateY(0px);
 }
-
-
-/* =========================
-   RESPONSIVE
-   ========================= */
 
 @media (min-width: 768px) {
   .hero-inner {
@@ -160,3 +130,4 @@
   }
 
 }
+

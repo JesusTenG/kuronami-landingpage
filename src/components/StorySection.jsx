@@ -1,4 +1,3 @@
-// src/components/StorySection.jsx
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import "../styles/StorySection.css";
@@ -50,8 +49,9 @@ export default function StorySection() {
           <span className="story-tagline">Design case study</span>
           <h2 className="story-title">The Concept Behind Kuronami</h2>
           <p className="story-subtitle">
-            Kuronami explores how a beverage brand can be built like a digital
-            product: modular, reactive and system-driven.
+            Kuronami is a design case study exploring how a fictional energy-drink brand can be built 
+            like a digital product system — combining brand identity, UI/UX motion design, 
+            and modular component thinking.
           </p>
         </div>
 

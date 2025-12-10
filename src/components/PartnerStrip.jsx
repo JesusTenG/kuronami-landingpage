@@ -1,4 +1,3 @@
-// src/components/PartnerStrip.jsx
 import "../styles/PartnerStrip.css";
 
 export default function PartnerStrip() {

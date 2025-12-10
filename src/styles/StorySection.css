@@ -1,8 +1,3 @@
-/* =========================
-   STORY SECTION – KURO NAMI
-   ========================= */
-
-/* Section selbst läuft auf dem globalen Hintergrund (bg-page / weiß) */
 .story-section {
   position: relative;
   padding-top: 200px;
@@ -11,7 +6,6 @@
   overflow: hidden;
 }
 
-/* WAVE DIVIDER – oben in Flavor-Farbe, wie von dir gewollt */
 .custom-shape-divider-top-story {
   position: absolute;
   top: 0;
@@ -19,7 +13,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  transform: rotate(180deg); /* vertical flip wie USP */
+  transform: rotate(180deg); 
 }
 
 .custom-shape-divider-top-story svg {
@@ -27,36 +21,26 @@
   display: block;
   width: calc(126% + 1px);
   height: 180px;
-  transform: rotateY(180deg); /* horizontal flip wie USP */
+  transform: rotateY(180deg);
 }
 
-/* Wellenfarbe = Flavor-Background (Mint oder anderer Flavor) */
 .custom-shape-divider-top-story .shape-fill {
   fill: var(--flavor-bg);
   transition: fill 0.5s ease;
 }
 
-/* =========================
-   INNER WRAPPER
-   ========================= */
-
 .story-inner {
   position: relative;
-  z-index: 1; /* über der Welle */
+  z-index: 1;
   padding: 40px 20px 0;
   text-align: center;
 }
-
-/* =========================
-   HEADING BLOCK (Hero-like)
-   ========================= */
 
 .story-heading {
   max-width: 640px;
   margin: 0 auto 2.4rem;
 }
 
-/* Tagline – wie hero-tagline: muted, dunkel auf hellem Hintergrund */
 .story-tagline {
   display: inline-flex;
   align-items: center;
@@ -76,7 +60,6 @@
   background: var(--accent);
 }
 
-/* Headline – wie Hero-H1: dark text-main */
 .story-title {
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   letter-spacing: 0.16em;
@@ -85,7 +68,6 @@
   color: var(--text-main);
 }
 
-/* Subline – wie hero-subtitle: text-muted */
 .story-subtitle {
   font-size: 0.98rem;
   color: var(--text-muted);
@@ -94,10 +76,6 @@
   line-height: 1.6;
   text-align: left;
 }
-
-/* =========================
-   ROTATING FLAVOR LINE
-   ========================= */
 
 .story-rotator-wrapper {
   display: flex;
@@ -124,7 +102,6 @@
   white-space: nowrap;
 }
 
-/* Sichtbarer lila Block */
 .story-rotator-main {
   display: flex;
   align-items: center;
@@ -134,16 +111,21 @@
   background: var(--accent);
   color: #000000;
   overflow: hidden;
-  white-space: nowrap; /* eine Zeile */
+  white-space: nowrap; 
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Wrapper, dessen width wir animieren */
 .story-rotator-main-outer {
   display: inline-flex;
   align-items: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: width 0.3s ease;
 }
 
-/* Unsichtbarer Mess-Span: gleiche Styles, aber off-screen */
 .story-rotator-main-measure {
   position: absolute;
   visibility: hidden;
@@ -152,16 +134,9 @@
   top: 0;
 }
 
-/* entspricht splitLevelClassName="overflow-hidden pb-..." */
 .story-rotator-split {
   overflow: hidden;
 }
-
-
-
-/* =========================
-   BODY TEXT
-   ========================= */
 
 .story-body {
   max-width: 720px;
@@ -174,10 +149,6 @@
   color: var(--text-muted);
   margin-bottom: 16px;
 }
-
-/* =========================
-   META ROW – Case-Infos
-   ========================= */
 
 .story-meta {
   display: flex;
@@ -210,11 +181,6 @@
   color: var(--text-muted);
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-/* Mobile: untereinander stapeln */
 @media (max-width: 600px) {
   .story-rotator-wrapper {
     flex-direction: column;

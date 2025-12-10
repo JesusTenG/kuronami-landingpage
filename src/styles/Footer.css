@@ -1,9 +1,5 @@
-/* =========================
-   FOOTER BASE
-   ========================= */
-
 .footer {
-  background: var(--accent); /* Footer in Accent-Farbe */
+  background: var(--accent); 
   padding: 32px 0 40px;
   border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
@@ -39,7 +35,7 @@
 .footer-links a,
 .footer-link-button {
   font-size: 0.9rem;
-  color: var(--bg-page); /* weiße / helle Schrift */
+  color: var(--bg-page); 
   text-decoration: none;
   cursor: pointer;
   background: transparent;
@@ -54,16 +50,11 @@
   transform: translateY(-1px);
 }
 
-/* Mobile Footer */
 @media (max-width: 640px) {
   .footer-links {
     gap: 14px;
   }
 }
-
-/* =========================
-   MODAL BACKDROP
-   ========================= */
 
 .legal-modal-backdrop {
   position: fixed;
@@ -77,10 +68,6 @@
   padding: 24px;
   animation: legal-backdrop-in 0.18s ease-out;
 }
-
-/* =========================
-   MODAL CONTAINER
-   ========================= */
 
 .legal-modal {
   position: relative;
@@ -102,15 +89,12 @@
   animation: legal-modal-in 0.22s ease-out forwards;
 }
 
-/* Inner scrollable area */
 .legal-modal-content {
-  padding: 22px 28px 26px 22px; /* rechts etwas mehr Padding */
+  padding: 22px 28px 26px 22px; 
   overflow-y: auto;
   max-height: 75vh;
 }
 
-
-/* Headings & Text */
 .legal-modal-content h2 {
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
@@ -136,17 +120,11 @@
   margin: 0.2rem 0 0.6rem;
 }
 
-/* Accent-colored links */
 .legal-modal-content a {
   color: var(--accent);
   text-decoration: underline;
 }
 
-/* =========================
-   SCROLLBAR – inside card
-   ========================= */
-
-/* WebKit (Chrome, Edge, Safari) */
 .legal-modal-content::-webkit-scrollbar {
   width: 7px;
 }
@@ -173,15 +151,10 @@
   display: none;
 }
 
-/* Firefox scrollbar */
 .legal-modal-content {
   scrollbar-width: thin;
   scrollbar-color: var(--accent) rgba(255, 255, 255, 0.08);
 }
-
-/* =========================
-   CLOSE BUTTON
-   ========================= */
 
 .legal-modal-close {
   position: absolute;
@@ -201,10 +174,6 @@
   color: var(--accent);
   transform: scale(1.05);
 }
-
-/* =========================
-   ANIMATIONS
-   ========================= */
 
 @keyframes legal-modal-in {
   from {
@@ -226,7 +195,6 @@
   }
 }
 
-/* Mobile tweaks for modal */
 @media (max-width: 640px) {
   .legal-modal {
     max-width: 95%;

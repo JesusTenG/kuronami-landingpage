@@ -1,4 +1,3 @@
-// src/components/Gallery.jsx
 import { useEffect, useState } from "react";
 import "../styles/Gallery.css";
 

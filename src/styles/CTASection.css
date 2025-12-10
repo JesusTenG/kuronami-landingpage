@@ -1,18 +1,15 @@
-/* SECTION WRAPPER */
 .cta-section {
   position: relative;
   background: var(--bg-page);
   padding: 80px 0 100px;
 }
 
-/* INNER WRAPPER – wie bei den anderen Sections */
 .cta-inner {
-  max-width: 720px;        /* keine Vollbreite, schön lesbar */
+  max-width: 720px;        
   margin: 0 auto;
   text-align: center;
 }
 
-/* Heading */
 .cta-inner h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
@@ -22,7 +19,6 @@
   margin-bottom: 1.6rem;
 }
 
-/* Paragraphs */
 .cta-inner p {
   font-size: 0.98rem;
   line-height: 1.7;
@@ -30,7 +26,6 @@
   margin-bottom: 0.9rem;
 }
 
-/* Button unten mit etwas Abstand */
 .cta-inner .btn-primary {
   margin-top: 1.8rem;
 }

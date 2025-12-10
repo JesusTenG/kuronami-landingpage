@@ -1,4 +1,3 @@
-// src/components/FlavorShowcase.jsx
 import "../styles/FlavorShowcase.css";
 
 import { flavors } from "../data/flavors";
@@ -84,7 +83,9 @@ const handleTouchEnd = (e) => {
       <div className="section-inner flavor-inner">
         <h2>Choose your Drift Flavor</h2>
         <p className="flavor-subtitle">
-          Swipe through each flavor and watch the atmosphere adapt.
+          Explore each flavor 
+          and get a clearer sense of how each variation contributes to the 
+          Kuronami brand identity.
         </p>
 
         <div className="flavor-slider">

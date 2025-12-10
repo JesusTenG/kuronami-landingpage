@@ -1,15 +1,11 @@
-/* USPSection.css */
-
-/* SECTION BACKGROUND (unten Mint, oben Weiß über Wave) */
 .usp-section {
   position: relative;
-  background: var(--flavor-bg); /* Mint-Fläche */
-  padding-top: 220px;        /* Platz für die Wellen */
+  background: var(--flavor-bg); 
+  padding-top: 220px;       
   padding-bottom: 90px;
   transition: background 0.5s ease;
 }
 
-/* WAVE DIVIDER – full width */
 .custom-shape-divider-top-usp {
   margin-top: -1px;
   position: absolute;
@@ -18,7 +14,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  transform: rotate(180deg); /* vertical flip */
+  transform: rotate(180deg); 
 }
 
 .custom-shape-divider-top-usp svg {
@@ -26,24 +22,18 @@
   display: block;
   width: calc(126% + 1px);
   height: 180px;
-  transform: rotateY(180deg); /* horizontal flip */
+  transform: rotateY(180deg); 
 }
 
-/* Wellenfarbe = Weiß (Hero-Background) */
 .custom-shape-divider-top-usp .shape-fill {
-  fill: var(--bg-page); /* z.B. #f5f5f7 */
+  fill: var(--bg-page);
 }
-
-/* =========================
-   SECTION HEADING
-   ========================= */
 
 .section-heading {
   text-align: center;
   margin-bottom: 2.4rem;
 }
 
-/* gleiche Optik wie FlavorShowcase-Headline */
 .section-heading h2 {
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
@@ -59,37 +49,28 @@
     0 6px 20px rgba(0,0,0,0.18);
 }
 
-/* gleiche Logik wie Flavor-Subtitle, aber leicht entsättigt für Mint-BG */
 .section-heading p {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.6;
   margin: 0 auto;
   max-width: 640px;
 
-  color: var(--bg-page); /* heller Kontrast auf Mint */
+  color: var(--bg-page); 
   text-shadow:
     0 3px 10px rgba(0,0,0,0.25),
     0 6px 20px rgba(0,0,0,0.18);
 }
 
-/* =========================
-   GRID
-   ========================= */
-
-/* Grid: mobile 1 Spalte, ab Tablet direkt 3 Spalten */
 .usp-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-/* Mint-Glasmorphism Cards */
 .usp-card {
   position: relative;
   padding: 22px 20px 26px;
   border-radius: 20px;
-
-  /* Glassy auf Mint-Background */
   background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.32),
@@ -121,7 +102,6 @@
     );
 }
 
-/* Icon oben – runde, leicht gläserne Kapsel */
 .usp-card-icon {
   width: 5rem;
   height: 5rem;
@@ -132,31 +112,29 @@
   justify-content: center;
 }
 
-/* Wenn du Icons als img nutzt */
 .usp-card-icon img {
   width: 60%;
   height: 60%;
   object-fit: contain;
 }
 
-/* Textbereich */
 .usp-card-content h3 {
   font-size: 1.05rem;
   margin-bottom: 8px;
-  color: #ecfdf5; /* heller, mintiger Weißton */
+  color: #ecfdf5; 
   font-weight: 600;
 }
 
 .usp-card-content p {
   font-size: 0.92rem;
-  color: rgba(240, 253, 250, 0.82); /* sehr hell, aber lesbar */
+  color: rgba(240, 253, 250, 0.82); 
   line-height: 1.55;
 }
 
-/* Tablet & Desktop: 3 nebeneinander */
 @media (min-width: 768px) {
   .usp-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    
   }
 
   .usp-card {

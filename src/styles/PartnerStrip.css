@@ -41,25 +41,19 @@
   box-shadow: none;
 }
 
-/* zusätzlicher Wrapper für Overflow */
 .partnerstrip-marquee {
   overflow: hidden;
   width: 100%;
 }
-
-/* TRACK – doppelte Logos, bewegt sich endlos */
 
 .partnerstrip-track {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   will-change: transform;
-
-  /* Kern: Infinity-Slide */
   animation: partnerstrip-scroll 30s linear infinite;
 }
 
-/* Logos: nicht flexen, konstant bleiben */
 .partnerstrip-logo {
   flex: 0 0 auto;
   height: 100px;
@@ -82,8 +76,6 @@
   transform: translateY(-2px);
 }
 
-/* Infinity-Keyframes: 0% = erster Satz sichtbar,
-   100% = zweiter Satz an exakt derselben Position → kein Sprung */
 @keyframes partnerstrip-scroll {
   0% {
     transform: translateX(0);
@@ -93,16 +85,14 @@
   }
 }
 
-/* Hover: smooth Stop statt Speed-Glitch */
 .partnerstrip-marquee-wrapper:hover .partnerstrip-track {
   animation-play-state: paused;
 }
 
-/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .partnerstrip-logo {
-    height: 56px;
+    height: 76px;
     margin-right: 72px;
   }
 
@@ -120,7 +110,7 @@
 
 @media (max-width: 600px) {
   .partnerstrip-logo {
-    height: 42px;
+    height: 72px;
     margin-right: 52px;
   }
 }

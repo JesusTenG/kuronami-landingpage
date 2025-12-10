@@ -1,4 +1,3 @@
-// src/components/RotatingText.jsx
 'use client';
 
 import {
@@ -176,7 +175,7 @@ const RotatingText = forwardRef((props, ref) => {
           layout="size"
           transition={{
             layout: { duration: 0.45, ease: "easeInOut" }, // Breitenanimation
-            ...transition, // weiterhin Spring für die Buchstaben
+            ...transition, 
           }}
         >
 

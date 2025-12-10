@@ -1,4 +1,3 @@
-// src/components/QualitySection.jsx
 import "../styles/QualitySection.css";
 import { useEffect, useRef, useState } from "react";
 
@@ -32,7 +31,7 @@ export default function QualitySection() {
       },
       {
         root: null,
-        threshold: 0.8,   // 20% der Section sichtbar reicht
+        threshold: 0.8,   // 80% der Section sichtbar zum triggern
       }
     );
 
@@ -65,7 +64,7 @@ useEffect(() => {
 
     setDisplayValues(nextValues);
 
-    if (progress >= 1.2) { // etwas größer wegen Delay
+    if (progress >= 1.2) { 
       window.clearInterval(intervalId);
     }
   }, interval);

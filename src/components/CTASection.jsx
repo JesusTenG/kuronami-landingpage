@@ -4,12 +4,12 @@ export default function CTASection() {
   return (
     <section id="cta" className="cta-section">
       <div className="section-inner cta-inner">
-        <h2>Built for creators who move fast</h2>
+        <h2>Kuronami Drift Fuel — Full Concept Breakdown & Design Principles</h2>
 
         <p>
-          Kuronami Drift Fuel is a fictional brand crafted to explore how design,
-          identity and storytelling can merge into a single cohesive product
-          experience. Every section on this page demonstrates how motion, visual
+          Kuronami Drift Fuel is a fictional product concept used to demonstrate brand system design, 
+          visual identity development and UI/UX storytelling in a modern digital case study.
+          Every section on this page demonstrates how motion, visual
           hierarchy and atmosphere can shape how a concept feels long before it
           ever becomes real.
         </p>

@@ -1,5 +1,3 @@
-/* src/styles/RotatingText.css */
-
 .text-rotate {
   display: flex;
   flex-wrap: wrap;
@@ -37,26 +35,19 @@
   white-space: pre;
 }
 
-
-/* ============================================
-   CUSTOM TYPOGRAPHY FOR ROTATING TEXT
-   ============================================ */
-
-/* Wrapper: sorgt für konsistente Schrift überall */
 .text-rotate,
 .text-rotate-word,
 .text-rotate-element {
-  font-family: "Inter", sans-serif;   /* oder Josefin Sans */
-  font-weight: 900;                   /* fetter Look */
-  color: #ffffff;                     /* weiße Schrift */
-  letter-spacing: -0.02em;             /* leicht techy */
+  font-family: "Inter", sans-serif;   
+  font-weight: 900;               
+  color: #ffffff;                   
+  letter-spacing: -0.02em;            
   line-height: 1.2;
   font-size: 1.3rem;
 }
 
-/* Falls du willst, dass der steady Text genauso aussieht */
 .story-rotator-label {
-  font-family: "Inter", sans-serif;   /* gleiche Schrift wie Rotate */
+  font-family: "Inter", sans-serif;   
   font-weight: 900;
   color: var(--text-main);
   line-height: 1.2;

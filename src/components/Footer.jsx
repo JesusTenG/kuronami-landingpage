@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/Footer.css";
 
 export default function Footer() {
-  const [openModal, setOpenModal] = useState(null); // 'legal' | 'privacy' | null
+  const [openModal, setOpenModal] = useState(null); 
 
   const closeModal = () => setOpenModal(null);
   const stopPropagation = (e) => e.stopPropagation();
@@ -51,7 +51,6 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* LEGAL NOTICE MODAL */}
       {openModal === "legal" && (
         <div className="legal-modal-backdrop" onClick={closeModal}>
           <div className="legal-modal" onClick={stopPropagation}>
@@ -162,7 +161,6 @@ export default function Footer() {
         </div>
       )}
 
-      {/* PRIVACY POLICY MODAL */}
       {openModal === "privacy" && (
         <div className="legal-modal-backdrop" onClick={closeModal}>
           <div className="legal-modal" onClick={stopPropagation}>

@@ -1,7 +1,3 @@
-/* =========================
-   NAVBAR – GLASS PILL
-   ========================= */
-
 .navbar {
   position: sticky;
   top: 0;
@@ -13,9 +9,8 @@
   overflow: visible;
 }
 
-/* Glas-Pill-Wrapper – DESKTOP-BASIS */
 .navbar-shell {
-  position: relative;      /* Bezug für .navbar-links-mobile */
+  position: relative;    
   max-width: 1100px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -34,14 +29,12 @@
     transform 0.25s ease;
 }
 
-/* Zustand beim Scrollen – DESKTOP */
 .navbar.navbar--scrolled .navbar-shell {
   background: rgba(255, 255, 255, 0.5);
   border-color: rgba(255, 255, 255, 0.24);
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.2);
 }
 
-/* Inhalt in der Pill: Logo, Links (Desktop), Burger */
 .navbar-inner {
   position: relative;
   padding: 10px 18px;
@@ -51,12 +44,8 @@
   justify-content: space-between;
   gap: 16px;
 
-  z-index: 2; /* liegt über dem Mobile-Menü */
+  z-index: 2; 
 }
-
-/* =========================
-   LOGO
-   ========================= */
 
 .navbar-logo {
   display: flex;
@@ -81,10 +70,6 @@
   text-shadow: 0 0 5px var(--bg-page);
 }
 
-/* =========================
-   BURGER-TOGGLE – BASIS
-   ========================= */
-
 .navbar-toggle {
   background: transparent;
   border: none;
@@ -107,7 +92,6 @@
   transform-origin: center;
 }
 
-/* Burger → X, wenn geöffnet (fallback via aria-expanded) */
 .navbar-toggle[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(3px) rotate(45deg);
 }
@@ -116,7 +100,6 @@
   transform: translateY(-3px) rotate(-45deg);
 }
 
-/* Extra-Kontrolle über Klasse */
 .navbar-toggle--open span:nth-child(1) {
   transform: translateY(4px) rotate(45deg);
 }
@@ -124,10 +107,6 @@
 .navbar-toggle--open span:nth-child(2) {
   transform: translateY(-4px) rotate(-45deg);
 }
-
-/* =========================
-   LINKS – BASISSTYLES
-   ========================= */
 
 .navbar-links {
   display: flex;
@@ -168,10 +147,6 @@
   width: 100%;
 }
 
-/* =========================
-   MOBILE
-   ========================= */
-
 @media (max-width: 767px) {
   .navbar {
     padding: 12px 12px;
@@ -190,27 +165,23 @@
     margin-right: auto;
   }
 
-  /* Desktop-Links in der Pill ausblenden */
   .navbar-links-desktop {
     display: none;
   }
 
-  /* Im offenen Zustand – nur oben rund, unten gerade */
   .navbar.navbar--open .navbar-shell {
     border-radius: 26px 26px 0 0;
     border-bottom: none;
   }
 
-  /* PILL – Mobile: voll weiß, kein Blur, Schatten NUR nach oben */
   .navbar-shell {
     background: #ffffff;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 
-    /* feine Outline + Schatten nach oben */
     box-shadow:
-      0 0 0 1px rgba(15, 23, 42, 0.04),   /* dezente Kontur */
-      0 -6px 16px rgba(15, 23, 42, 0.14); /* nur nach oben */
+      0 0 0 1px rgba(15, 23, 42, 0.04),  
+      0 -6px 16px rgba(15, 23, 42, 0.14);
 
     border-color: rgba(148, 163, 184, 0.45);
   }
@@ -223,15 +194,13 @@
     border-color: rgba(148, 163, 184, 0.55);
   }
 
-  /* CARD – bündig, gleiche Breite, Schatten nur nach unten
-     ➜ jetzt mit smooth Transition (max-height + opacity) */
   .navbar-links-mobile {
     position: absolute;
     box-sizing: border-box;
 
     left: -1px;
     right: -1px;
-    top: calc(100% - 1px); /* 1px Überlappung, keine Lücke */
+    top: calc(100% - 1px); 
 
     display: flex;
     flex-direction: column;
@@ -246,12 +215,10 @@
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 
-    /* feine Kontur + Schatten nach unten */
     box-shadow:
       0 0 0 1px rgba(15, 23, 42, 0.04),
       0 10px 24px rgba(15, 23, 42, 0.18);
 
-    /* Animation-Setup */
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -272,7 +239,7 @@
   }
 
   .navbar-links-mobile--open {
-    max-height: 420px;   /* genug für deine Links; bei Bedarf anpassen */
+    max-height: 420px;   
     opacity: 1;
     pointer-events: auto;
   }
@@ -283,10 +250,6 @@
     padding: 4px 2px;
   }
 }
-
-/* =========================
-   DESKTOP
-   ========================= */
 
 @media (min-width: 768px) {
   .navbar {
@@ -316,7 +279,6 @@
     font-size: 0.75rem;
   }
 
-  /* Desktop-Links in der Pill sichtbar */
   .navbar-links-desktop {
     display: flex;
     align-items: center;
@@ -324,12 +286,10 @@
     margin-left: auto;
   }
 
-  /* Mobile-Menü ausblenden */
   .navbar-links-mobile {
     display: none;
   }
 
-  /* Burger auf Desktop unsichtbar */
   .navbar-toggle {
     display: none;
   }
@@ -339,7 +299,6 @@
     font-size: 0.9rem;
   }
 
-  /* Desktop – eleganter Scroll-Schatten */
   .navbar.navbar--scrolled .navbar-shell {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.24);

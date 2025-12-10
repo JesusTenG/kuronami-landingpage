@@ -1,7 +1,3 @@
-/* =========================
-   QUALITY SECTION
-   ========================= */
-
 .quality-section {
   background: var(--flavor-bg);
   color: var(--bg-page);
@@ -15,8 +11,6 @@
   gap: 3rem;
   align-items: center;
 }
-
-/* LEFT COPY */
 
 .quality-kicker {
   text-transform: uppercase;
@@ -35,7 +29,7 @@
 
 .quality-heading span {
   display: block;
-  color: #e5f4ff; /* leichter Akzent im zweiten Teil */
+  color: #e5f4ff; 
 }
 
 .quality-body {
@@ -49,10 +43,6 @@
   color: rgba(226, 232, 240, 0.8);
 }
 
-/* ============================
-   KPI GRID – RIGHT SIDE
-============================ */
-
 .quality-stats {
   display: flex;
   flex-direction: column;
@@ -60,8 +50,6 @@
   padding-left: 40px;
   border-left: 1.6px dotted rgba(255, 255, 255, 0.45);
   margin-left: 40px;
-
-  /* leichte Transparenz für Apple-Vibe */
   backdrop-filter: blur(4px);
 }
 
@@ -71,7 +59,6 @@
   gap: 4px;
 }
 
-/* Label – sehr clean, sehr minimal */
 .quality-stat-label span {
   font-size: 0.85rem;
   letter-spacing: 0.06em;
@@ -80,7 +67,6 @@
   text-transform: uppercase;
 }
 
-/* Zahl + Prozent – groß, elegant */
 .quality-stat-value {
   display: flex;
   align-items: baseline;
@@ -100,10 +86,6 @@
   font-weight: 600;
 }
 
-/* =========================================
-   MOBILE – Vollständig zentriert & clean
-========================================= */
-
 @media (max-width: 768px) {
 
   .quality-section {
@@ -122,7 +104,6 @@
     padding: 0 22px;
   }
 
-  /* TEXTBLOCK LINKS → jetzt 100% zentriert */
   .quality-copy {
     max-width: 520px;
     margin: 0 auto;
@@ -141,7 +122,6 @@
     margin-right: auto;
   }
 
-  /* KPI-Spalte gesamt zentrieren */
   .quality-stats {
     width: 100%;
     max-width: 420px;
@@ -159,7 +139,6 @@
     text-align: center;
   }
 
-  /* Einzelne KPI-Zeile */
   .quality-stat {
     width: 100%;
     max-width: 360px;
@@ -180,5 +159,27 @@
   .quality-stat-label span {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .quality-section {
+    padding: 48px 20px;
+  }
+
+  .quality-inner {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .quality-stats {
+    margin-left: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .quality-section {
+    padding: 64px 24px;
   }
 }
